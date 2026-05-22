@@ -586,15 +586,28 @@ section { position: relative; }
 }
 
 /* ─── VISION ──────────────────────────────────────── */
+.vision-section::before {
+  content:        "";
+  position:       absolute;
+  inset:          0;
+  background:     url('assets/bg-div-vision.png') center / cover no-repeat;
+  opacity:        .75;
+  pointer-events: none;
+  z-index:        0;
+}
 .vision {
   display:               grid;
   grid-template-columns: 1fr 1.1fr;
   gap:                   80px;
   align-items:           center;
-  padding:               140px 56px 140px;
   max-width:             1480px;
+  padding:               120px 56px;
   margin:                0 auto;
+  position:              relative;
+  z-index:               1;
 }
+.vision-text { position: relative; }
+
 .vision-eyebrow {
   color:          var(--gold);
   font-size:      14px;
@@ -642,50 +655,121 @@ section { position: relative; }
 }
 .vision .cta { font-size: 12px; padding: 16px 24px; }
 
+/* ─── ORBIT COLUMN ────────────────────────────────── */
+.orbit-col {
+  position:       relative;
+  display:        flex;
+  flex-direction: column;
+}
+
 /* Orbit image with floating labels */
 .orbit {
-  position:            relative;
-  aspect-ratio:        3/2;
-  width:               100%;
-  background-image:    url('assets/vision-orbit.png');
+  position:    relative;
+  aspect-ratio: 3/2;
+  width:       100%;
+  animation:   orbitFloat 8s ease-in-out infinite;
+}
+
+.orbit-img {
+  position:            absolute;
+  inset:               0;
+  background-image:    url('assets/vision-img.png');
   background-size:     cover;
   background-position: center;
   background-repeat:   no-repeat;
+  z-index:             0;
 }
+
+/* ─── ORBIT LABELS (desktop) ──────────────────────── */
 .orbit-label {
   position:    absolute;
   display:     flex;
   align-items: center;
-  gap:         14px;
+  gap:         12px;
   transform:   translateY(-50%);
+  white-space: nowrap;
+  z-index:     1;
 }
+
+/* Positions calées sur les icônes de vision-img.png (1536×1024 = 3:2) */
+.orbit-label.technologie { top: 17%; left: 53%; }
+.orbit-label.conscience   { top: 44%; left: 49%; }
+.orbit-label.creativite   { top: 65%; left: 50%; }
+
 .orbit-label .leader {
-  width:       clamp(40px, 8%, 90px);
+  width:       clamp(40px, 7%, 80px);
   height:      1px;
-  background:  linear-gradient(90deg, transparent, currentColor 60%);
+  background:  currentColor;
   opacity:     .55;
   flex-shrink: 0;
 }
 .orbit-label .dot {
-  width:        6px;
-  height:       6px;
+  width:         6px;
+  height:        6px;
   border-radius: 50%;
-  background:   currentColor;
-  box-shadow:   0 0 8px currentColor;
-  flex:         none;
+  background:    currentColor;
+  flex:          none;
+  animation:     dotGlow 2.4s ease-in-out infinite;
 }
-.orbit-label .text { display: flex; flex-direction: column; gap: 4px; }
+.orbit-label .text { display: flex; flex-direction: column; gap: 3px; }
 .orbit-label .title {
-  font-size:      13px;
+  font-size:      12px;
   letter-spacing: .28em;
   font-weight:    600;
   text-transform: uppercase;
   color:          var(--ink);
 }
 .orbit-label.cyan .title { color: var(--cyan); }
-.orbit-label .sub  { font-size: 13px; color: var(--ink-dim); font-weight: 300; }
+.orbit-label .sub  { font-size: 12px; color: var(--ink-dim); font-weight: 300; }
 .orbit-label.gold  { color: var(--gold); }
 .orbit-label.cyan  { color: var(--cyan); }
+
+/* ─── ORBIT PILLARS (mobile uniquement) ──────────── */
+.orbit-pillars {
+  display:   none;
+  list-style: none;
+}
+.orbit-pillar {
+  display:     flex;
+  align-items: center;
+  gap:         16px;
+}
+.pillar-dot {
+  width:         8px;
+  height:        8px;
+  border-radius: 50%;
+  flex-shrink:   0;
+}
+.pillar-dot.gold { background: var(--gold); box-shadow: 0 0 8px var(--gold); }
+.pillar-dot.cyan { background: var(--cyan); box-shadow: 0 0 8px var(--cyan); }
+.pillar-content {
+  display:        flex;
+  flex-direction: column;
+  gap:            2px;
+}
+.pillar-title {
+  font-size:      12px;
+  letter-spacing: .28em;
+  font-weight:    600;
+  text-transform: uppercase;
+  color:          var(--ink);
+}
+.pillar-sub {
+  font-size:   13px;
+  color:       var(--ink-dim);
+  font-weight: 300;
+}
+
+/* ─── ORBIT ANIMATIONS ────────────────────────────── */
+@keyframes orbitFloat {
+  0%, 100% { transform: translateY(0);    }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes dotGlow {
+  0%, 100% { box-shadow: 0 0 3px 1px currentColor; opacity: .75; }
+  50%       { box-shadow: 0 0 9px 3px currentColor; opacity: 1;   }
+}
 
 /* ─── FOOTER ──────────────────────────────────────── */
 footer {
@@ -779,8 +863,15 @@ button:focus-visible {
   }
   .vision {
     grid-template-columns: 1fr;
-    padding:               100px 28px;
-    gap:                   48px;
+    padding:               80px 24px;
+    gap:                   40px;
+  }
+  .orbit-label  { display: none; }
+  .orbit-pillars {
+    display:        flex;
+    flex-direction: column;
+    gap:            20px;
+    padding-top:    28px;
   }
   .nav        { padding: 20px 28px; }
   .nav-links  { display: none; }

@@ -196,7 +196,7 @@
             et des agents autonomes<br />
             pour augmenter la créativité humaine.
           </p>
-          <a class="link" href="#" aria-label="Découvrir CelestIA — bientôt disponible">
+          <a class="link" href="#" aria-disabled="true" aria-label="Découvrir CelestIA — bientôt disponible">
             <span>Découvrir</span>
             <svg width="20" height="10" viewBox="0 0 20 10" fill="none" aria-hidden="true">
               <path d="M1 5 H18 M14 1 L18 5 L14 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="square" />
@@ -251,7 +251,7 @@
             technologiques pour façonner<br />
             les idées de demain.
           </p>
-          <a class="link" href="#" aria-label="Découvrir les Expériments — bientôt disponible">
+          <a class="link" href="#" aria-disabled="true" aria-label="Découvrir les Expériments — bientôt disponible">
             <span>Découvrir</span>
             <svg width="20" height="10" viewBox="0 0 20 10" fill="none" aria-hidden="true">
               <path d="M1 5 H18 M14 1 L18 5 L14 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="square" />
@@ -263,10 +263,12 @@
     </section>
 
     <!-- ── 03 VISION ──────────────────────────────── -->
-    <section class="stage" id="vision" aria-labelledby="vision-heading">
+    <section class="vision-section stage" id="vision" aria-labelledby="vision-heading">
 
       <div class="vision">
-        <div>
+
+        <!-- Colonne texte -->
+        <div class="vision-text">
           <p class="vision-eyebrow reveal">Ma Vision</p>
 
           <h2 id="vision-heading" class="reveal d1">
@@ -290,37 +292,69 @@
           </a>
         </div>
 
-        <!-- Image avec étiquettes flottantes -->
-        <div class="orbit reveal d2"
-             role="img"
-             aria-label="Orbites symbolisant les trois piliers de LumenLab : Technologie, Conscience et Créativité">
+        <!-- Colonne visuelle : orbite + labels + liste mobile -->
+        <div class="orbit-col">
 
-          <div class="orbit-label gold" style="top:21%;left:52%" aria-hidden="true">
-            <span class="leader"></span>
-            <span class="dot"></span>
-            <span class="text">
-              <span class="title">Technologie</span>
-              <span class="sub">Explorer l'IA et ses possibilités</span>
-            </span>
+          <!-- Orbite avec étiquettes flottantes (desktop) -->
+          <div class="orbit reveal d2"
+               role="img"
+               aria-label="Orbites symbolisant les trois piliers de LumenLab : Technologie, Conscience et Créativité">
+
+            <div class="orbit-img" aria-hidden="true"></div>
+
+            <div class="orbit-label technologie gold" aria-hidden="true">
+              <span class="leader"></span>
+              <span class="dot"></span>
+              <span class="text">
+                <span class="title">Technologie</span>
+                <span class="sub">Explorer l'IA et ses possibilités</span>
+              </span>
+            </div>
+
+            <div class="orbit-label conscience cyan" aria-hidden="true">
+              <span class="leader"></span>
+              <span class="dot"></span>
+              <span class="text">
+                <span class="title">Conscience</span>
+                <span class="sub">Mieux se connaître, s'élever</span>
+              </span>
+            </div>
+
+            <div class="orbit-label creativite gold" aria-hidden="true">
+              <span class="leader"></span>
+              <span class="dot"></span>
+              <span class="text">
+                <span class="title">Créativité</span>
+                <span class="sub">Imaginer et créer sans limites</span>
+              </span>
+            </div>
+
           </div>
 
-          <div class="orbit-label cyan" style="top:48%;left:56%" aria-hidden="true">
-            <span class="leader"></span>
-            <span class="dot"></span>
-            <span class="text">
-              <span class="title">Conscience</span>
-              <span class="sub">Mieux se connaître, s'élever</span>
-            </span>
-          </div>
-
-          <div class="orbit-label gold" style="top:74%;left:52%" aria-hidden="true">
-            <span class="leader"></span>
-            <span class="dot"></span>
-            <span class="text">
-              <span class="title">Créativité</span>
-              <span class="sub">Imaginer et créer sans limites</span>
-            </span>
-          </div>
+          <!-- Liste des piliers (mobile uniquement) -->
+          <ul class="orbit-pillars reveal d3" aria-hidden="true">
+            <li class="orbit-pillar">
+              <span class="pillar-dot gold"></span>
+              <span class="pillar-content">
+                <span class="pillar-title">Technologie</span>
+                <span class="pillar-sub">Explorer l'IA et ses possibilités</span>
+              </span>
+            </li>
+            <li class="orbit-pillar">
+              <span class="pillar-dot cyan"></span>
+              <span class="pillar-content">
+                <span class="pillar-title">Conscience</span>
+                <span class="pillar-sub">Mieux se connaître, s'élever</span>
+              </span>
+            </li>
+            <li class="orbit-pillar">
+              <span class="pillar-dot gold"></span>
+              <span class="pillar-content">
+                <span class="pillar-title">Créativité</span>
+                <span class="pillar-sub">Imaginer et créer sans limites</span>
+              </span>
+            </li>
+          </ul>
 
         </div>
       </div>
