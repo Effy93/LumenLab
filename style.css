@@ -453,18 +453,40 @@ section { position: relative; }
 .project .link {
   display:        inline-flex;
   align-items:    center;
-  gap:            14px;
+  gap:            16px;
+  padding:        13px 20px;
+  border:         1px solid var(--cyan);
+  color:          var(--cyan);
   font-size:      11px;
   letter-spacing: .32em;
   font-weight:    600;
   text-transform: uppercase;
-  color:          var(--cyan);
-  transition:     gap .4s;
+  background:     transparent;
   margin-left:    8px;
+  position:       relative;
+  overflow:       hidden;
+  transition:     color .5s ease;
 }
-.project.celest .link { color: var(--gold); }
-.project.exp    .link { color: var(--ink);  }
-.project .link:hover  { gap: 22px; }
+.project .link::before {
+  content:    "";
+  position:   absolute;
+  inset:      0;
+  background: var(--cyan);
+  transform:  translateX(-101%);
+  transition: transform .5s cubic-bezier(.7,0,.3,1);
+  z-index:    0;
+}
+.project .link:hover         { color: #050810; }
+.project .link:hover::before { transform: translateX(0); }
+.project .link span,
+.project .link svg  { position: relative; z-index: 1; }
+.project .link svg  { transition: transform .4s ease; }
+.project .link:hover svg { transform: translateX(6px); }
+
+.project.celest .link         { border-color: var(--gold); color: var(--gold); }
+.project.celest .link::before { background: var(--gold); }
+.project.exp    .link         { border-color: var(--ink);  color: var(--ink); }
+.project.exp    .link::before { background: var(--ink); }
 
 /* Project visual backgrounds */
 .lotus-scene {
