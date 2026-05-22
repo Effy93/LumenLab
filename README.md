@@ -1,6 +1,12 @@
 # LumenLab
 
+![LumenLab — aperçu du site](docs/screenshots/hero-final.png)
+
 Site vitrine single-page — portail vers AstraLumen et CelestIA.
+
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 
 ## Structure
 
@@ -36,9 +42,9 @@ LumenLab/
 
 ## Projets portails
 
-- **AstraLumen** — introspection, mémoire, création (couleur : cyan `#5fd4d0`)
-- **CelestIA** — IA, agents autonomes, créativité augmentée (couleur : or `#d9a85a`)
-- **Expériments** — prototypes et explorations technologiques
+- **AstraLumen** — introspection, mémoire, création
+- **CelestIA** — IA, agents autonomes, créativité augmentée
+- **Expériments** — prototypes et explorations technologiques, TaskHelper
 
 ## Design
 
@@ -47,4 +53,4 @@ Typographies : Cormorant Garamond (serif) + Manrope (sans-serif)
 
 ## Auteure
 
-Eva Philippo — [hello@lumenlab.fr](mailto:hello@lumenlab.fr)
+Eva Philippo — [philippoeva2@gmail.com](mailto:philippoeva2@gmail.com)
