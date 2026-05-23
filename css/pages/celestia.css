@@ -1,0 +1,243 @@
+/* ─── Tokens CelestIA ─────────────────────────────── */
+:root {
+  --gold-line: rgba(217,168,90,.28);
+  --gold-dim:  rgba(217,168,90,.13);
+  --cyan-dim:  rgba(95,212,208,.16);
+  --ink-dim:   #b8b4ac;
+  --ink-mute:  #7a7870;
+  --base:      #02040c;
+}
+
+html, body {
+  height:   100%;
+  overflow: hidden;
+}
+body { background: var(--base); }
+
+/* Variantes de couleur des particules */
+.spark.gold { background: var(--gold-hi); box-shadow: 0 0 5px 1px var(--gold-hi); }
+.spark.cyan { background: var(--cyan);    box-shadow: 0 0 5px 1px var(--cyan); }
+
+/* ─── Navbar — dark theme ─────────────────────────── */
+header {
+  background:    linear-gradient(180deg, rgba(2,4,12,.96) 0%, transparent 100%);
+  border-bottom: 1px solid var(--gold-dim);
+}
+
+/* ─── Background fixe ─────────────────────────────── */
+.bg {
+  position:            fixed;
+  inset:               0;
+  z-index:             0;
+  background-image:    url('../../assets/bg-celestia-WIP.png');
+  background-size:     cover;
+  background-position: center;
+}
+.bg::after {
+  content:  "";
+  position: absolute;
+  inset:    0;
+  background:
+    radial-gradient(ellipse at center,
+      transparent      0%,
+      transparent      28%,
+      rgba(2,4,12,.18) 50%,
+      rgba(2,4,12,.62) 75%,
+      rgba(2,4,12,.88) 100%),
+    linear-gradient(180deg,
+      rgba(2,4,12,.82) 0%,
+      transparent      18%,
+      transparent      78%,
+      rgba(2,4,12,.82) 100%);
+}
+
+/* ─── Main ────────────────────────────────────────── */
+main {
+  position:       relative;
+  z-index:        5;
+  height:         calc(100vh - 64px);
+  margin-top:     64px;
+  pointer-events: none;
+}
+
+/* ─── Titre ───────────────────────────────────────── */
+.page-title {
+  position:       absolute;
+  top:            clamp(20px, 4vh, 48px);
+  left: 0; right: 0;
+  font-family:    var(--serif);
+  font-weight:    300;
+  font-size:      clamp(48px, 8vw, 88px);
+  line-height:    1;
+  color:          var(--ink);
+  letter-spacing: -.01em;
+  text-align:     center;
+  pointer-events: auto;
+  opacity:        0;
+  animation:      fadeUp .9s cubic-bezier(.2,.7,.2,1) .3s forwards;
+}
+.page-title .ia { color: var(--gold); font-style: italic; }
+
+.page-sub {
+  position:       absolute;
+  top:            calc(clamp(20px, 4vh, 48px) + clamp(50px, 8.5vw, 92px) + 16px);
+  left: 0; right: 0;
+  font-family:    var(--serif);
+  font-size:      clamp(22px, 3.5vw, 52px);
+  font-weight:    300;
+  font-style:     italic;
+  color:          var(--ink-dim);
+  letter-spacing: .02em;
+  text-align:     center;
+  pointer-events: auto;
+  opacity:        0;
+  animation:      fadeUp .9s cubic-bezier(.2,.7,.2,1) .5s forwards;
+}
+
+/* ─── Système orbital ─────────────────────────────── */
+.orbital-system {
+  position:  fixed;
+  top:       50vh;
+  left:      50vw;
+  width:     300px;
+  height:    300px;
+  opacity:   0;
+  animation: fadeUpOrbit 1s cubic-bezier(.2,.7,.2,1) .7s forwards;
+}
+@keyframes fadeUpOrbit {
+  from { opacity: 0; transform: translate(-50%, calc(-50% + 14px)); }
+  to   { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.deco-ring {
+  position:      absolute;
+  inset:         0;
+  border-radius: 50%;
+  border:        1px solid rgba(217,168,90,.10);
+}
+.deco-arc-gold {
+  position:      absolute;
+  inset:         0;
+  border-radius: 50%;
+  border-top:    1.5px solid rgba(240,201,118,.55);
+  border-right:  1.5px solid rgba(217,168,90,.18);
+  border-bottom: 1.5px solid transparent;
+  border-left:   1.5px solid transparent;
+  filter:        drop-shadow(0 0 8px rgba(217,168,90,.6));
+  animation:     spin 14s linear infinite;
+}
+.deco-arc-cyan {
+  position:      absolute;
+  inset:         10px;
+  border-radius: 50%;
+  border-bottom: 1px solid rgba(95,212,208,.32);
+  border-left:   1px solid rgba(95,212,208,.12);
+  border-top:    1px solid transparent;
+  border-right:  1px solid transparent;
+  animation:     spin 20s linear infinite reverse;
+}
+.orbit-spin {
+  position:  absolute;
+  inset:     0;
+  animation: spin 28s linear infinite;
+}
+.satellite {
+  position:      absolute;
+  width:         82px;
+  height:        82px;
+  border-radius: 50%;
+  overflow:      hidden;
+  border:        1.5px solid var(--gold-line);
+  box-shadow:    0 0 16px rgba(217,168,90,.28), 0 0 32px rgba(217,168,90,.10);
+  background:    rgba(2,4,12,.55);
+  animation:     spin 28s linear infinite reverse;
+}
+.satellite img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+
+.satellite-charles  { left: 18px;  top: 57px; }
+.satellite-astra    { left: 200px; top: 57px; }
+.satellite-caroline { left: 109px; top: 214px; }
+
+@media (min-width: 600px) {
+  .orbital-system     { width: 440px; height: 440px; }
+  .system-center      { width: 72px; height: 72px; left: 184px; top: 184px; }
+  .satellite          { width: 96px; height: 96px; }
+  .satellite-charles  { left: 38px;  top: 95px; }
+  .satellite-astra    { left: 306px; top: 95px; }
+  .satellite-caroline { left: 172px; top: 327px; }
+}
+
+/* ─── Bouton retour ───────────────────────────────── */
+.cta {
+  display:        inline-flex;
+  align-items:    center;
+  gap:            18px;
+  padding:        13px 22px;
+  border:         1px solid var(--gold);
+  color:          var(--gold);
+  font-family:    var(--sans);
+  font-size:      10px;
+  letter-spacing: .28em;
+  font-weight:    600;
+  text-transform: uppercase;
+  background:     transparent;
+  position:       absolute;
+  bottom:         clamp(20px, 4vh, 40px);
+  left:           50%;
+  transform:      translateX(-50%);
+  overflow:       hidden;
+  transition:     color .4s;
+  cursor:         pointer;
+  pointer-events: auto;
+  white-space:    nowrap;
+  opacity:        0;
+  animation:      fadeUpCta .9s cubic-bezier(.2,.7,.2,1) 1.15s forwards;
+}
+@keyframes fadeUpCta {
+  from { opacity: 0; transform: translateX(-50%) translateY(14px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+.cta::before {
+  content:    "";
+  position:   absolute;
+  inset:      0;
+  background: var(--gold);
+  transform:  translateX(-101%);
+  transition: transform .4s cubic-bezier(.7,0,.3,1);
+}
+.cta:hover         { color: var(--base); }
+.cta:hover::before { transform: translateX(0); }
+.cta span, .cta svg { position: relative; z-index: 1; }
+.cta svg           { transition: transform .3s; flex-shrink: 0; }
+.cta:hover svg     { transform: translateX(5px); }
+.cta:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+
+/* ─── Keyframes ───────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ─── Reduced motion ──────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .page-title, .page-sub, .cta {
+    opacity: 1 !important; animation: none !important;
+  }
+  .orbital-system {
+    opacity: 1 !important; animation: none !important;
+    transform: translate(-50%, -50%) !important;
+  }
+  .cta              { transform: translateX(-50%) !important; }
+  .deco-arc-gold, .deco-arc-cyan,
+  .orbit-spin, .satellite { animation: none !important; }
+  .spark            { display: none !important; }
+  .cta, .cta::before { transition: none !important; }
+}
+
+@media (max-height: 580px) {
+  html, body { overflow: auto; }
+}

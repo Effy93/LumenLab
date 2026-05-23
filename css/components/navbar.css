@@ -1,0 +1,64 @@
+/* ─── Navbar partagée — pages secondaires ─────────── */
+/* Toujours en row, jamais en colonne. Pas de breakpoint. */
+
+header {
+  position:        fixed;
+  top: 0; left: 0; right: 0;
+  z-index:         50;
+  display:         flex;
+  flex-direction:  row;
+  align-items:     center;
+  justify-content: space-between;
+  height:          clamp(52px, 8vw, 64px);
+  padding:         0 clamp(14px, 4vw, 56px);
+}
+
+.brand {
+  display:        flex;
+  align-items:    center;
+  gap:            clamp(8px, 1.5vw, 14px);
+  font-family:    var(--serif);
+  font-size:      clamp(15px, 2.8vw, 22px);
+  font-weight:    500;
+  letter-spacing: .06em;
+  color:          var(--ink);
+  transition:     opacity .25s;
+  white-space:    nowrap;
+}
+.brand:hover { opacity: .75; }
+
+.brand-mark {
+  width:         clamp(14px, 2.5vw, 20px);
+  height:        clamp(14px, 2.5vw, 20px);
+  border-radius: 50%;
+  background:    radial-gradient(circle at 35% 35%, var(--gold-hi), var(--gold) 45%, var(--gold-deep) 85%);
+  box-shadow:    0 0 12px rgba(217,168,90,.6), 0 0 26px rgba(217,168,90,.22);
+  position:      relative;
+  flex-shrink:   0;
+}
+.brand-mark::after {
+  content:       "";
+  position:      absolute;
+  inset:         -4px;
+  border-radius: 50%;
+  border:        1px solid rgba(217,168,90,.3);
+}
+
+.brand-text .lab { color: var(--gold); }
+
+.nav-links {
+  display:    flex;
+  gap:        clamp(12px, 2.5vw, 42px);
+  list-style: none;
+}
+.nav-links a {
+  font-family:    var(--sans);
+  font-size:      clamp(8px, 1.2vw, 11px);
+  font-weight:    500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color:          var(--ink-mute);
+  transition:     color .3s;
+  white-space:    nowrap;
+}
+.nav-links a:hover { color: var(--ink); }
