@@ -159,6 +159,7 @@ main {
 .satellite-caroline { left: 109px; top: 214px; }
 
 @media (min-width: 600px) {
+  .cta                { top: calc(50vh + 180px); }
   .orbital-system     { width: 440px; height: 440px; }
   .system-center      { width: 72px; height: 72px; left: 184px; top: 184px; }
   .satellite          { width: 96px; height: 96px; }
@@ -182,7 +183,7 @@ main {
   text-transform: uppercase;
   background:     transparent;
   position:       absolute;
-  bottom:         clamp(20px, 4vh, 40px);
+  top:            calc(50vh + 110px);
   left:           50%;
   transform:      translateX(-50%);
   overflow:       hidden;
