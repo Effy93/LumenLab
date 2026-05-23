@@ -1,0 +1,227 @@
+/* ─── PROJECTS SECTION ──────────────────────────────── */
+.projects { padding: 160px 56px 120px; }
+
+/* ─── HERO ──────────────────────────────────────────── */
+.hero {
+  position:              relative;
+  min-height:            100vh;
+  display:               grid;
+  grid-template-columns: minmax(440px,1fr) 1.35fr;
+  align-items:           center;
+  padding:               140px 56px 80px;
+  gap:                   48px;
+  overflow:              hidden;
+  background:            #03050b;
+}
+
+.hero-image {
+  position:            absolute;
+  inset:               0;
+  z-index:             0;
+  background-image:    url('../../assets/hero.jpg');
+  background-size:     cover;
+  background-position: center;
+  background-repeat:   no-repeat;
+}
+.hero-image::after {
+  content:    "";
+  position:   absolute;
+  inset:      0;
+  background:
+    linear-gradient(90deg, rgba(3,5,11,.45) 0%, rgba(3,5,11,.15) 18%, transparent 38%),
+    linear-gradient(180deg, rgba(3,5,11,.45) 0%, transparent 18%, transparent 78%, #03050b 100%);
+}
+
+.hero-scene { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+
+.ray {
+  position:         absolute;
+  left:             79px;
+  top:              62px;
+  width:            1px;
+  height:           600px;
+  background:       linear-gradient(180deg, rgba(217,168,90,.55), transparent);
+  transform-origin: top left;
+  pointer-events:   none;
+  z-index:          2;
+}
+.ray.r1 { transform: rotate(34deg); }
+.ray.r2 { transform: rotate(58deg); }
+.ray.r3 { transform: rotate(78deg); }
+
+.hero-text {
+  position:      relative;
+  z-index:       3;
+  max-width:     640px;
+  padding-right: 24px;
+}
+.eyebrow {
+  font-size:      14px;
+  letter-spacing: .36em;
+  color:          var(--gold);
+  text-transform: uppercase;
+  font-weight:    500;
+  display:        inline-flex;
+  align-items:    center;
+  gap:            14px;
+  margin-bottom:  36px;
+}
+.eyebrow::before {
+  content:     "";
+  width:       32px;
+  height:      1px;
+  background:  var(--gold);
+  opacity:     .6;
+  flex-shrink: 0;
+}
+.hero h1 {
+  font-family:    var(--serif);
+  font-weight:    400;
+  font-size:      clamp(64px, 9vw, 132px);
+  line-height:    .95;
+  letter-spacing: -.01em;
+  margin:         0 0 32px;
+}
+.hero h1 .lumen { color: var(--ink); }
+.hero h1 .lab {
+  background:              linear-gradient(180deg, var(--gold-hi) 0%, var(--gold) 50%, var(--gold-deep) 100%);
+  -webkit-background-clip: text;
+  background-clip:         text;
+  -webkit-text-fill-color: transparent;
+  font-style:              italic;
+  display:                 inline-block;
+  padding-right:           .08em;
+  margin-right:            -.04em;
+}
+.lede {
+  font-size:   22px;
+  line-height: 1.65;
+  color:       var(--ink-dim);
+  max-width:   480px;
+  margin:      0 0 48px;
+  font-weight: 300;
+}
+
+.scroll-ind {
+  position:    absolute;
+  left:        56px;
+  bottom:      48px;
+  display:     flex;
+  align-items: center;
+  gap:         14px;
+  z-index:     3;
+}
+.scroll-ind .line {
+  width:      1px;
+  height:     54px;
+  background: linear-gradient(180deg, var(--gold), transparent);
+  position:   relative;
+  overflow:   hidden;
+}
+.scroll-ind .line::after {
+  content:    "";
+  position:   absolute;
+  left:       0; right: 0;
+  top:        -20px;
+  height:     20px;
+  background: var(--gold-hi);
+  animation:  scrollDot 2.6s ease-in-out infinite;
+}
+.scroll-ind small {
+  font-size:      13px;
+  letter-spacing: .36em;
+  color:          var(--ink-dim);
+  text-transform: uppercase;
+}
+
+/* ─── VISION ────────────────────────────────────────── */
+.vision-section::before {
+  content:        "";
+  position:       absolute;
+  inset:          0;
+  background:     url('../../assets/bg-div-vision.png') center / cover no-repeat;
+  opacity:        .75;
+  pointer-events: none;
+  z-index:        0;
+}
+.vision {
+  display:               grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap:                   80px;
+  align-items:           center;
+  max-width:             1480px;
+  padding:               120px 56px;
+  margin:                0 auto;
+  position:              relative;
+  z-index:               1;
+}
+.vision-text { position: relative; }
+
+.vision-eyebrow {
+  color:          var(--gold);
+  font-size:      14px;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  font-weight:    500;
+  margin-bottom:  32px;
+  display:        inline-flex;
+  align-items:    center;
+  gap:            14px;
+}
+.vision-eyebrow::before {
+  content:     "";
+  width:       32px;
+  height:      1px;
+  background:  var(--gold);
+  opacity:     .6;
+  flex-shrink: 0;
+}
+.vision h2 {
+  font-family:    var(--serif);
+  font-weight:    300;
+  font-size:      clamp(54px, 6vw, 88px);
+  line-height:    1;
+  margin:         0 0 36px;
+  letter-spacing: -.01em;
+}
+.vision h2 .l1 { color: var(--ink); display: block; }
+.vision h2 .l2 { color: var(--ink); display: block; }
+.vision h2 .l3 {
+  background:              linear-gradient(180deg, var(--gold-hi), var(--gold) 60%, var(--gold-deep));
+  -webkit-background-clip: text;
+  background-clip:         text;
+  -webkit-text-fill-color: transparent;
+  font-style:              italic;
+  display:                 block;
+}
+.vision p {
+  color:       var(--ink-dim);
+  font-size:   18px;
+  line-height: 1.85;
+  font-weight: 300;
+  max-width:   480px;
+  margin:      0 0 40px;
+}
+.vision .cta { font-size: 12px; padding: 16px 24px; }
+
+/* ─── ORBIT COLUMN ──────────────────────────────────── */
+.orbit-col {
+  position:       relative;
+  display:        flex;
+  flex-direction: column;
+}
+.orbit {
+  position:     relative;
+  aspect-ratio: 3/2;
+  width:        100%;
+  animation:    orbitFloat 8s ease-in-out infinite;
+}
+.orbit-img {
+  position:            absolute;
+  inset:               0;
+  background-image:    url('../../assets/vision-img.png');
+  background-size:     cover;
+  background-position: center;
+  background-repeat:   no-repeat;
+  z-index:             0;
+}

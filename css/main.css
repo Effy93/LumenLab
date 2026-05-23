@@ -1,0 +1,29 @@
+/* ═══════════════════════════════════════════════════
+   LumenLab — Point d'entrée CSS
+   Palette : fond #050810 · or #d9a85a · cyan #5fd4d0
+   Typographie : Cormorant Garamond + Manrope
+═══════════════════════════════════════════════════ */
+
+/* base */
+@import './base/variables.css';
+@import './base/reset.css';
+@import './base/typography.css';
+
+/* layout */
+@import './layout/sections.css';
+@import './layout/header.css';
+@import './layout/footer.css';
+
+/* components */
+@import './components/buttons.css';
+@import './components/cards.css';
+@import './components/project-card.css';
+@import './components/badges.css';
+
+/* pages */
+@import './pages/home.css';
+@import './pages/wip.css';
+
+/* utilities — toujours en dernier */
+@import './utilities/animations.css';
+@import './utilities/responsive.css';

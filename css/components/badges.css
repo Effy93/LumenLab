@@ -1,0 +1,77 @@
+.orbit-label {
+  position:    absolute;
+  display:     flex;
+  align-items: center;
+  gap:         12px;
+  transform:   translateY(-50%);
+  white-space: nowrap;
+  z-index:     1;
+}
+
+.orbit-label.technologie { top: 17%; left: 53%; }
+.orbit-label.conscience  { top: 44%; left: 49%; }
+.orbit-label.creativite  { top: 65%; left: 50%; }
+
+.orbit-label .leader {
+  width:       clamp(40px, 7%, 80px);
+  height:      1px;
+  background:  currentColor;
+  opacity:     .55;
+  flex-shrink: 0;
+}
+.orbit-label .dot {
+  width:         6px;
+  height:        6px;
+  border-radius: 50%;
+  background:    currentColor;
+  flex:          none;
+  animation:     dotGlow 2.4s ease-in-out infinite;
+}
+.orbit-label .text  { display: flex; flex-direction: column; gap: 3px; }
+.orbit-label .title {
+  font-size:      12px;
+  letter-spacing: .28em;
+  font-weight:    600;
+  text-transform: uppercase;
+  color:          var(--ink);
+}
+.orbit-label.cyan .title { color: var(--cyan); }
+.orbit-label .sub  { font-size: 12px; color: var(--ink-dim); font-weight: 300; }
+.orbit-label.gold  { color: var(--gold); }
+.orbit-label.cyan  { color: var(--cyan); }
+
+/* ─── ORBIT PILLARS (mobile) ─────────────────────────── */
+.orbit-pillars {
+  display:    none;
+  list-style: none;
+}
+.orbit-pillar {
+  display:     flex;
+  align-items: center;
+  gap:         16px;
+}
+.pillar-dot {
+  width:         8px;
+  height:        8px;
+  border-radius: 50%;
+  flex-shrink:   0;
+}
+.pillar-dot.gold { background: var(--gold); box-shadow: 0 0 8px var(--gold); }
+.pillar-dot.cyan { background: var(--cyan); box-shadow: 0 0 8px var(--cyan); }
+.pillar-content {
+  display:        flex;
+  flex-direction: column;
+  gap:            2px;
+}
+.pillar-title {
+  font-size:      12px;
+  letter-spacing: .28em;
+  font-weight:    600;
+  text-transform: uppercase;
+  color:          var(--ink);
+}
+.pillar-sub {
+  font-size:   13px;
+  color:       var(--ink-dim);
+  font-weight: 300;
+}

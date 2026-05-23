@@ -6,352 +6,302 @@
   <title>CelestIA — Un projet en cours de construction</title>
   <meta name="description" content="CelestIA prend forme. Agents intelligents, création collaborative et organisation au service de la vision LumenLab." />
   <meta name="robots" content="noindex, nofollow" />
+  <link rel="preload" as="image" href="assets/bg-celestia-WIP.png" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=optional"
+        rel="stylesheet" />
+  <link rel="stylesheet" href="css/base/variables.css" />
+  <link rel="stylesheet" href="css/pages/wip.css" />
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* ─── Tokens spécifiques à CelestIA ────────── */
     :root {
-      --gold:      #d9a85a;
-      --gold-hi:   #f0c976;
-      --gold-deep: #8b6a2f;
       --gold-line: rgba(217,168,90,.28);
       --gold-dim:  rgba(217,168,90,.13);
-      --cyan:      #5fd4d0;
       --cyan-dim:  rgba(95,212,208,.16);
-      --ink:       #f1ece1;
       --ink-dim:   #b8b4ac;
       --ink-mute:  #7a7870;
-      --serif:     "Cormorant Garamond", "Times New Roman", serif;
-      --sans:      "Manrope", system-ui, sans-serif;
       --base:      #02040c;
     }
 
-    /* ─── Pas de scroll ─────────────────────────── */
     html, body {
-      height: 100%;
+      height:   100%;
       overflow: hidden;
     }
+    body { background: var(--base); }
 
-    body {
-      font-family: var(--sans);
-      color: var(--ink);
-      background: var(--base);
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    /* ─── Background fixe ───────────────────────── */
-    .bg {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      background-image: url('assets/bg-celestia-WIP.png');
-      background-size: cover;
-      background-position: center;
-    }
-    .bg::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at center,
-          transparent 0%,
-          transparent 28%,
-          rgba(2,4,12,.18) 50%,
-          rgba(2,4,12,.62) 75%,
-          rgba(2,4,12,.88) 100%),
-        linear-gradient(180deg,
-          rgba(2,4,12,.82) 0%,
-          transparent 18%,
-          transparent 78%,
-          rgba(2,4,12,.82) 100%);
-    }
-
-    /* ─── Particules ────────────────────────────── */
-    #sparkles {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-      overflow: hidden;
-    }
-    .spark {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0;
-      animation: sparkFloat linear infinite;
-    }
+    /* Variantes de couleur des particules */
     .spark.gold { background: var(--gold-hi); box-shadow: 0 0 5px 1px var(--gold-hi); }
     .spark.cyan { background: var(--cyan);    box-shadow: 0 0 5px 1px var(--cyan); }
-    @keyframes sparkFloat {
-      0%   { opacity: 0; transform: translate(0,0) scale(.5); }
-      12%  { opacity: .7; }
-      88%  { opacity: .4; }
-      100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.1); }
-    }
 
     /* ─── Header / Nav ──────────────────────────── */
-    /* ─── Mobile-first : empilé (brand + nav) ──── */
     header {
-      position: fixed;
+      position:       fixed;
       top: 0; left: 0; right: 0;
-      z-index: 50;
-      display: flex;
+      z-index:        50;
+      display:        flex;
       flex-direction: column;
-      align-items: center;
-      gap: 5px;
-      padding: 8px 16px;
-      background: linear-gradient(180deg, rgba(2,4,12,.96) 0%, transparent 100%);
-      border-bottom: 1px solid var(--gold-dim);
+      align-items:    center;
+      gap:            5px;
+      padding:        8px 16px;
+      background:     linear-gradient(180deg, rgba(2,4,12,.96) 0%, transparent 100%);
+      border-bottom:  1px solid var(--gold-dim);
     }
-
     .brand {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--serif);
-      font-size: 15px;
-      font-weight: 500;
+      display:        flex;
+      align-items:    center;
+      gap:            8px;
+      font-family:    var(--serif);
+      font-size:      15px;
+      font-weight:    500;
       letter-spacing: .06em;
-      color: var(--ink);
-      transition: opacity .25s;
+      color:          var(--ink);
+      transition:     opacity .25s;
     }
     .brand:hover { opacity: .75; }
-
     .brand-mark {
-      width: 14px; height: 14px;
+      width:         14px;
+      height:        14px;
       border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, var(--gold-hi), var(--gold) 45%, var(--gold-deep) 85%);
-      box-shadow: 0 0 10px rgba(217,168,90,.6), 0 0 22px rgba(217,168,90,.22);
-      position: relative;
-      flex-shrink: 0;
+      background:    radial-gradient(circle at 35% 35%, var(--gold-hi), var(--gold) 45%, var(--gold-deep) 85%);
+      box-shadow:    0 0 10px rgba(217,168,90,.6), 0 0 22px rgba(217,168,90,.22);
+      position:      relative;
+      flex-shrink:   0;
     }
     .brand-mark::after {
-      content: "";
-      position: absolute;
-      inset: -4px;
+      content:       "";
+      position:      absolute;
+      inset:         -4px;
       border-radius: 50%;
-      border: 1px solid rgba(217,168,90,.3);
+      border:        1px solid rgba(217,168,90,.3);
     }
     .brand-text .lab { color: var(--gold); }
-
     .nav-links {
-      display: flex;
-      gap: clamp(20px, 3vw, 42px);
+      display:    flex;
+      gap:        clamp(20px, 3vw, 42px);
       list-style: none;
     }
     .nav-links a {
-      font-size: 9px;
-      font-weight: 500;
+      font-size:      9px;
+      font-weight:    500;
       letter-spacing: .14em;
       text-transform: uppercase;
-      color: var(--ink-mute);
-      transition: color .3s;
+      color:          var(--ink-mute);
+      transition:     color .3s;
     }
     .nav-links a:hover { color: var(--ink); }
 
-    /* ─── Desktop : côte à côte dès 480px ───────── */
     @media (min-width: 480px) {
       header {
-        flex-direction: row;
+        flex-direction:  row;
         justify-content: space-between;
-        height: 64px;
-        padding: 0 clamp(24px, 4vw, 60px);
-        gap: 0;
+        height:          64px;
+        padding:         0 clamp(24px, 4vw, 60px);
+        gap:             0;
       }
-      .brand      { font-size: 20px; gap: 12px; }
+      .brand      { font-size: 22px; gap: 12px; }
       .brand-mark { width: 20px; height: 20px; }
       .nav-links  { gap: clamp(20px, 3vw, 42px); }
       .nav-links a { font-size: 11px; letter-spacing: .24em; }
     }
 
-    /* ─── Main : conteneur relatif, plein écran ─── */
+    /* ─── Background fixe ───────────────────────── */
+    .bg {
+      position:            fixed;
+      inset:               0;
+      z-index:             0;
+      background-image:    url('assets/bg-celestia-WIP.png');
+      background-size:     cover;
+      background-position: center;
+    }
+    .bg::after {
+      content:  "";
+      position: absolute;
+      inset:    0;
+      background:
+        radial-gradient(ellipse at center,
+          transparent     0%,
+          transparent     28%,
+          rgba(2,4,12,.18) 50%,
+          rgba(2,4,12,.62) 75%,
+          rgba(2,4,12,.88) 100%),
+        linear-gradient(180deg,
+          rgba(2,4,12,.82) 0%,
+          transparent      18%,
+          transparent      78%,
+          rgba(2,4,12,.82) 100%);
+    }
+
+    /* ─── Main ──────────────────────────────────── */
     main {
-      position: relative;
-      z-index: 5;
-      height: calc(100vh - 60px);
-      margin-top: 60px;
+      position:       relative;
+      z-index:        5;
+      height:         calc(100vh - 60px);
+      margin-top:     60px;
       pointer-events: none;
     }
     @media (min-width: 480px) {
       main { height: calc(100vh - 64px); margin-top: 64px; }
     }
 
-    /* ─── Titre : ancré en haut, centré ─────────── */
+    /* ─── Titre ─────────────────────────────────── */
     .page-title {
-      position: absolute;
-      top: clamp(20px, 4vh, 48px);
+      position:       absolute;
+      top:            clamp(20px, 4vh, 48px);
       left: 0; right: 0;
-      font-family: var(--serif);
-      font-weight: 300;
-      font-size: clamp(36px, 5.5vw, 64px);
-      line-height: 1;
-      color: var(--ink);
+      font-family:    var(--serif);
+      font-weight:    300;
+      font-size:      clamp(36px, 5.5vw, 64px);
+      line-height:    1;
+      color:          var(--ink);
       letter-spacing: -.01em;
-      text-align: center;
+      text-align:     center;
       pointer-events: auto;
-      opacity: 0;
-      animation: fadeUp .9s cubic-bezier(.2,.7,.2,1) .3s forwards;
+      opacity:        0;
+      animation:      fadeUp .9s cubic-bezier(.2,.7,.2,1) .3s forwards;
     }
     .page-title .ia { color: var(--gold); font-style: italic; }
 
     .page-sub {
-      position: absolute;
-      top: calc(clamp(20px, 4vh, 48px) + clamp(38px, 6vw, 68px) + 8px);
+      position:       absolute;
+      top:            calc(clamp(20px, 4vh, 48px) + clamp(38px, 6vw, 68px) + 8px);
       left: 0; right: 0;
-      font-family: var(--serif);
-      font-size: clamp(12px, 1.4vw, 15px);
-      font-weight: 300;
-      color: var(--ink-mute);
+      font-family:    var(--serif);
+      font-size:      clamp(12px, 1.4vw, 15px);
+      font-weight:    300;
+      color:          var(--ink-mute);
       letter-spacing: .06em;
-      text-align: center;
+      text-align:     center;
       pointer-events: auto;
-      opacity: 0;
-      animation: fadeUp .9s cubic-bezier(.2,.7,.2,1) .5s forwards;
+      opacity:        0;
+      animation:      fadeUp .9s cubic-bezier(.2,.7,.2,1) .5s forwards;
     }
 
-    /* ─── Système orbital — mobile first ───────────
+    /* ─── Système orbital ───────────────────────── */
+    /*
       Base mobile : système 300×300, centre (150,150)
       Rayon orbite : 105px  |  portrait : 82px (r=41)
-        x = cx + r·sin(θ)   left = x − r_portrait
-        y = cy − r·cos(θ)   top  = y − r_portrait
-      Charles  300° → left=18   top=57
-      Astra     60° → left=200  top=57
-      Caroline 180° → left=109  top=214
-      Centre orbe : 60px  → left=120  top=120
-    ──────────────────────────────────────────── */
+      Charles 300° → left=18  top=57
+      Astra    60° → left=200 top=57
+      Caroline180° → left=109 top=214
+    */
     .orbital-system {
-      position: fixed;
-      top: 50vh;
-      left: 50vw;
-      width: 300px;
-      height: 300px;
-      /* centrage exact + fadeUp combinés dans un seul keyframe */
-      opacity: 0;
+      position:  fixed;
+      top:       50vh;
+      left:      50vw;
+      width:     300px;
+      height:    300px;
+      opacity:   0;
       animation: fadeUpOrbit 1s cubic-bezier(.2,.7,.2,1) .7s forwards;
     }
-
     @keyframes fadeUpOrbit {
       from { opacity: 0; transform: translate(-50%, calc(-50% + 14px)); }
       to   { opacity: 1; transform: translate(-50%, -50%); }
     }
 
-    /* Anneau décoratif statique */
     .deco-ring {
-      position: absolute;
-      inset: 0;
+      position:      absolute;
+      inset:         0;
       border-radius: 50%;
-      border: 1px solid rgba(217,168,90,.10);
+      border:        1px solid rgba(217,168,90,.10);
     }
-
-    /* Arc doré — sens horaire */
     .deco-arc-gold {
-      position: absolute;
-      inset: 0;
+      position:      absolute;
+      inset:         0;
       border-radius: 50%;
       border-top:    1.5px solid rgba(240,201,118,.55);
       border-right:  1.5px solid rgba(217,168,90,.18);
       border-bottom: 1.5px solid transparent;
       border-left:   1.5px solid transparent;
-      filter: drop-shadow(0 0 8px rgba(217,168,90,.6));
-      animation: spin 14s linear infinite;
+      filter:        drop-shadow(0 0 8px rgba(217,168,90,.6));
+      animation:     spin 14s linear infinite;
     }
-
-    /* Arc cyan — sens anti-horaire */
     .deco-arc-cyan {
-      position: absolute;
-      inset: 10px;
+      position:      absolute;
+      inset:         10px;
       border-radius: 50%;
       border-bottom: 1px solid rgba(95,212,208,.32);
       border-left:   1px solid rgba(95,212,208,.12);
       border-top:    1px solid transparent;
       border-right:  1px solid transparent;
-      animation: spin 20s linear infinite reverse;
+      animation:     spin 20s linear infinite reverse;
     }
-
-
-    /* Conteneur des satellites — tourne en continu */
     .orbit-spin {
-      position: absolute;
-      inset: 0;
+      position:  absolute;
+      inset:     0;
       animation: spin 28s linear infinite;
     }
-
-    /* Portrait satellite — contre-rotation pour rester droit */
     .satellite {
-      position: absolute;
-      width: 82px; height: 82px;
+      position:      absolute;
+      width:         82px;
+      height:        82px;
       border-radius: 50%;
-      overflow: hidden;
-      border: 1.5px solid var(--gold-line);
-      box-shadow:
-        0 0 16px rgba(217,168,90,.28),
-        0 0 32px rgba(217,168,90,.10);
-      background: rgba(2,4,12,.55);
-      animation: spin 28s linear infinite reverse;
+      overflow:      hidden;
+      border:        1.5px solid var(--gold-line);
+      box-shadow:    0 0 16px rgba(217,168,90,.28), 0 0 32px rgba(217,168,90,.10);
+      background:    rgba(2,4,12,.55);
+      animation:     spin 28s linear infinite reverse;
     }
-    .satellite img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center top;
-    }
+    .satellite img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 
-    /* Positions mobile (rayon 105, r_portrait 41) */
     .satellite-charles  { left: 18px;  top: 57px; }
     .satellite-astra    { left: 200px; top: 57px; }
     .satellite-caroline { left: 109px; top: 214px; }
 
-
-    /* ─── Bouton retour : ancré en bas, centré ──── */
-    .cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 18px;
-      padding: 13px 22px;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      font-family: var(--sans);
-      font-size: 10px;
-      letter-spacing: .28em;
-      font-weight: 600;
-      text-transform: uppercase;
-      background: transparent;
-      position: absolute;
-      bottom: clamp(20px, 4vh, 40px);
-      left: 50%;
-      transform: translateX(-50%);
-      overflow: hidden;
-      transition: color .4s;
-      cursor: pointer;
-      pointer-events: auto;
-      white-space: nowrap;
-      opacity: 0;
-      animation: fadeUpCta .9s cubic-bezier(.2,.7,.2,1) 1.15s forwards;
+    @media (min-width: 600px) {
+      .orbital-system    { width: 440px; height: 440px; }
+      .system-center     { width: 72px; height: 72px; left: 184px; top: 184px; }
+      .satellite         { width: 96px; height: 96px; }
+      .satellite-charles  { left: 38px;  top: 95px; }
+      .satellite-astra    { left: 306px; top: 95px; }
+      .satellite-caroline { left: 172px; top: 327px; }
     }
 
+    /* ─── Bouton retour ─────────────────────────── */
+    .cta {
+      display:        inline-flex;
+      align-items:    center;
+      gap:            18px;
+      padding:        13px 22px;
+      border:         1px solid var(--gold);
+      color:          var(--gold);
+      font-family:    var(--sans);
+      font-size:      10px;
+      letter-spacing: .28em;
+      font-weight:    600;
+      text-transform: uppercase;
+      background:     transparent;
+      position:       absolute;
+      bottom:         clamp(20px, 4vh, 40px);
+      left:           50%;
+      transform:      translateX(-50%);
+      overflow:       hidden;
+      transition:     color .4s;
+      cursor:         pointer;
+      pointer-events: auto;
+      white-space:    nowrap;
+      opacity:        0;
+      animation:      fadeUpCta .9s cubic-bezier(.2,.7,.2,1) 1.15s forwards;
+    }
     @keyframes fadeUpCta {
       from { opacity: 0; transform: translateX(-50%) translateY(14px); }
       to   { opacity: 1; transform: translateX(-50%) translateY(0); }
     }
     .cta::before {
-      content: "";
-      position: absolute;
-      inset: 0;
+      content:    "";
+      position:   absolute;
+      inset:      0;
       background: var(--gold);
-      transform: translateX(-101%);
+      transform:  translateX(-101%);
       transition: transform .4s cubic-bezier(.7,0,.3,1);
     }
-    .cta:hover { color: var(--base); }
-    .cta:hover::before { transform: translateX(0); }
+    .cta:hover          { color: var(--base); }
+    .cta:hover::before  { transform: translateX(0); }
     .cta span, .cta svg { position: relative; z-index: 1; }
-    .cta svg { transition: transform .3s; flex-shrink: 0; }
-    .cta:hover svg { transform: translateX(5px); }
-    .cta:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+    .cta svg            { transition: transform .3s; flex-shrink: 0; }
+    .cta:hover svg      { transform: translateX(5px); }
+    .cta:focus-visible  { outline: 2px solid var(--gold); outline-offset: 4px; }
 
     /* ─── Keyframes ─────────────────────────────── */
     @keyframes fadeUp {
@@ -363,32 +313,13 @@
       to   { transform: rotate(360deg); }
     }
 
-    /* ─── Desktop ≥600px ───────────────────────────
-      Système 440×440, centre (220,220)
-      Rayon orbite : 155px  |  portrait : 96px (r=48)
-      Charles  300° → left=38   top=95
-      Astra     60° → left=306  top=95
-      Caroline 180° → left=172  top=327
-      Centre orbe : 72px  → left=184  top=184
-    ─────────────────────────────────────────────── */
-    @media (min-width: 600px) {
-      /* Système 440×440, centre (220,220), rayon 155px, portrait 96px (r=48) */
-      .orbital-system { width: 440px; height: 440px; }
-      .system-center  { width: 72px; height: 72px; left: 184px; top: 184px; }
-      .satellite      { width: 96px; height: 96px; }
-      .satellite-charles  { left: 38px;  top: 95px; }
-      .satellite-astra    { left: 306px; top: 95px; }
-      .satellite-caroline { left: 172px; top: 327px; }
-    }
-
     /* ─── Reduced motion ────────────────────────── */
     @media (prefers-reduced-motion: reduce) {
       .page-title, .page-sub, .cta {
         opacity: 1 !important; animation: none !important;
       }
       .orbital-system {
-        opacity: 1 !important;
-        animation: none !important;
+        opacity: 1 !important; animation: none !important;
         transform: translate(-50%, -50%) !important;
       }
       .cta { transform: translateX(-50%) !important; }
@@ -397,7 +328,6 @@
       .cta, .cta::before { transition: none !important; }
     }
 
-    /* Sur écrans très courts : autoriser le scroll minimal */
     @media (max-height: 580px) {
       html, body { overflow: auto; }
     }
@@ -417,7 +347,7 @@
   <header>
     <a href="index.html" class="brand" aria-label="LumenLab — Retour à l'accueil">
       <span class="brand-mark" aria-hidden="true"></span>
-      <span class="brand-text">Lumen<span class="lab">Lab</span></span>
+      <span class="brand-text">LUMEN<span class="lab">LAB</span></span>
     </a>
     <nav aria-label="Navigation principale">
       <ul class="nav-links" role="list">
@@ -433,19 +363,14 @@
   ════════════════════════════════════════════ -->
   <main>
 
-    <!-- Titre compact -->
     <h1 class="page-title">Celest<span class="ia">IA</span></h1>
     <p class="page-sub">En cours de construction</p>
 
     <!-- Système orbital -->
     <div class="orbital-system" aria-label="Les trois intelligences de CelestIA en orbite">
-
-      <!-- Anneau décoratif -->
       <div class="deco-ring"      aria-hidden="true"></div>
       <div class="deco-arc-gold"  aria-hidden="true"></div>
       <div class="deco-arc-cyan"  aria-hidden="true"></div>
-
-      <!-- Portraits en orbite -->
       <div class="orbit-spin" aria-hidden="true">
         <div class="satellite satellite-charles">
           <img src="assets/Charles2.png" alt="" />
@@ -457,7 +382,6 @@
           <img src="assets/Caro2.png" alt="" />
         </div>
       </div>
-
     </div>
 
     <!-- Bouton retour -->
@@ -472,7 +396,6 @@
   </main>
 
   <script>
-    /* Particules or + cyan */
     const sc = document.getElementById('sparkles');
     for (let i = 0; i < 28; i++) {
       const el = document.createElement('div');
