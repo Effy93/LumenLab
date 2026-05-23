@@ -1,93 +1,101 @@
 /* ─── SKIP LINK ─────────────────────────────────────── */
 .skip-link {
-  position:       absolute;
-  top:            -100px;
-  left:           24px;
-  z-index:        100;
-  padding:        12px 18px;
-  background:     var(--gold);
-  color:          #050810;
-  font-size:      12px;
-  letter-spacing: .18em;
-  font-weight:    600;
+  position: absolute;
+  top: -100px;
+  left: 24px;
+  z-index: 100;
+  padding: 12px 18px;
+  background: var(--gold);
+  color: #050810;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  font-weight: 600;
   text-transform: uppercase;
-  transition:     top .25s ease;
+  transition: top 0.25s ease;
 }
-.skip-link:focus { top: 24px; }
+.skip-link:focus {
+  top: 24px;
+}
 
 /* ─── ATMOSPHERIC BACKGROUND ────────────────────────── */
 .stage {
-  position:   relative;
+  position: relative;
   background:
-    radial-gradient(1200px 700px at 70% -10%, rgba(217,168,90,.06), transparent 60%),
-    radial-gradient(900px 600px at 10% 110%, rgba(95,212,208,.04), transparent 60%),
+    radial-gradient(1200px 700px at 70% -10%, rgba(217, 168, 90, 0.06), transparent 60%),
+    radial-gradient(900px 600px at 10% 110%, rgba(95, 212, 208, 0.04), transparent 60%),
     linear-gradient(180deg, #03050b 0%, #050810 30%, #050810 70%, #03050b 100%);
 }
 
 .stars {
-  position:         absolute;
-  inset:            0;
-  pointer-events:   none;
-  opacity:          .55;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.55;
   background-image:
     radial-gradient(1px 1px at 12% 18%, #fff, transparent 50%),
     radial-gradient(1px 1px at 22% 42%, #fff, transparent 50%),
-    radial-gradient(1px 1px at 35%  8%, rgba(255,255,255,.6), transparent 50%),
+    radial-gradient(1px 1px at 35% 8%, rgba(255, 255, 255, 0.6), transparent 50%),
     radial-gradient(1px 1px at 48% 30%, #fff, transparent 50%),
-    radial-gradient(1px 1px at 63% 12%, rgba(255,255,255,.7), transparent 50%),
+    radial-gradient(1px 1px at 63% 12%, rgba(255, 255, 255, 0.7), transparent 50%),
     radial-gradient(1.5px 1.5px at 78% 22%, #fff, transparent 50%),
-    radial-gradient(1px 1px at 88%  6%, rgba(255,255,255,.5), transparent 50%),
+    radial-gradient(1px 1px at 88% 6%, rgba(255, 255, 255, 0.5), transparent 50%),
     radial-gradient(1px 1px at 92% 38%, #fff, transparent 50%),
-    radial-gradient(1px 1px at  6% 55%, rgba(255,255,255,.4), transparent 50%),
-    radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,.5), transparent 50%),
-    radial-gradient(1px 1px at 55% 50%, rgba(255,255,255,.4), transparent 50%),
-    radial-gradient(1px 1px at 72% 58%, rgba(255,255,255,.5), transparent 50%);
+    radial-gradient(1px 1px at 6% 55%, rgba(255, 255, 255, 0.4), transparent 50%),
+    radial-gradient(1px 1px at 30% 60%, rgba(255, 255, 255, 0.5), transparent 50%),
+    radial-gradient(1px 1px at 55% 50%, rgba(255, 255, 255, 0.4), transparent 50%),
+    radial-gradient(1px 1px at 72% 58%, rgba(255, 255, 255, 0.5), transparent 50%);
 }
 
 .grain {
-  position:         absolute;
-  inset:            0;
-  pointer-events:   none;
-  mix-blend-mode:   overlay;
-  opacity:          .06;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  opacity: 0.06;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 }
 
 /* ─── SECTION ATOMS ─────────────────────────────────── */
-section { position: relative; }
+section {
+  position: relative;
+}
 
 .section-eyebrow {
-  font-family:    var(--serif);
-  letter-spacing: .5em;
-  font-size:      16px;
-  font-weight:    500;
+  font-family: var(--serif);
+  letter-spacing: 0.5em;
+  font-size: 16px;
+  font-weight: 500;
   text-transform: uppercase;
-  color:          var(--ink);
-  text-align:     center;
+  color: var(--ink);
+  text-align: center;
 }
 .section-eyebrow::after {
-  content:    "";
-  display:    block;
-  width:      38px;
-  height:     1px;
+  content: '';
+  display: block;
+  width: 38px;
+  height: 1px;
   background: var(--gold);
-  margin:     14px auto 0;
+  margin: 14px auto 0;
 }
 .section-sub {
-  text-align:     center;
-  color:          var(--ink-dim);
-  font-size:      17px;
-  letter-spacing: .05em;
-  margin-top:     18px;
-  font-weight:    300;
+  text-align: center;
+  color: var(--ink-dim);
+  font-size: 17px;
+  letter-spacing: 0.05em;
+  margin-top: 18px;
+  font-weight: 300;
 }
 
 /* ─── ACCESSIBILITÉ ─────────────────────────────────── */
 a:focus-visible,
 button:focus-visible {
-  outline:        2px solid var(--gold);
+  outline: 2px solid var(--gold);
   outline-offset: 4px;
-  border-radius:  2px;
+  border-radius: 2px;
 }
-.cta:focus-visible         { outline-offset: 6px; }
-.nav-links a:focus-visible { outline-offset: 6px; }
+.cta:focus-visible {
+  outline-offset: 6px;
+}
+.nav-links a:focus-visible {
+  outline-offset: 6px;
+}

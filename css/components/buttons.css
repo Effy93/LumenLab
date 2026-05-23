@@ -1,31 +1,43 @@
 .cta {
-  display:        inline-flex;
-  align-items:    center;
-  gap:            22px;
-  padding:        18px 28px;
-  border:         1px solid var(--gold);
-  color:          var(--gold);
-  font-size:      13px;
-  letter-spacing: .28em;
-  font-weight:    600;
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  padding: 18px 28px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 0.28em;
+  font-weight: 600;
   text-transform: uppercase;
-  background:     transparent;
-  cursor:         pointer;
-  position:       relative;
-  overflow:       hidden;
-  transition:     color .5s ease;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.5s ease;
 }
 .cta::before {
-  content:    "";
-  position:   absolute;
-  inset:      0;
+  content: '';
+  position: absolute;
+  inset: 0;
   background: var(--gold);
-  transform:  translateX(-101%);
-  transition: transform .5s cubic-bezier(.7,0,.3,1);
-  z-index:    0;
+  transform: translateX(-101%);
+  transition: transform 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+  z-index: 0;
 }
-.cta:hover          { color: #050810; }
-.cta:hover::before  { transform: translateX(0); }
-.cta span, .cta svg { position: relative; z-index: 1; }
-.cta svg            { transition: transform .4s ease; }
-.cta:hover svg      { transform: translateX(6px); }
+.cta:hover {
+  color: #050810;
+}
+.cta:hover::before {
+  transform: translateX(0);
+}
+.cta span,
+.cta svg {
+  position: relative;
+  z-index: 1;
+}
+.cta svg {
+  transition: transform 0.4s ease;
+}
+.cta:hover svg {
+  transform: translateX(6px);
+}

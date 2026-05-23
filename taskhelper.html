@@ -1,92 +1,120 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TaskHelper — Un projet en cours de construction</title>
-  <meta name="description" content="TaskHelper prend forme. Un outil pensé pour organiser vos projets et simplifier votre quotidien." />
-  <meta name="robots" content="noindex, nofollow" />
-  <link rel="preload" as="image" href="assets/bg-taskhelper.png" fetchpriority="high" />
-  <link rel="icon" type="image/png" href="assets/logo-lune.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=optional"
-        rel="stylesheet" />
-  <link rel="stylesheet" href="css/base/variables.css" />
-  <link rel="stylesheet" href="css/components/navbar.css" />
-  <link rel="stylesheet" href="css/pages/wip.css" />
-  <link rel="stylesheet" href="css/pages/taskhelper.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskHelper — Un projet en cours de construction</title>
+    <meta
+      name="description"
+      content="TaskHelper prend forme. Un outil pensé pour organiser vos projets et simplifier votre quotidien."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="preload" as="image" href="assets/bg-taskhelper.png" fetchpriority="high" />
+    <link rel="icon" type="image/png" href="assets/logo-lune.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=optional"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/base/variables.css" />
+    <link rel="stylesheet" href="css/components/navbar.css" />
+    <link rel="stylesheet" href="css/pages/wip.css" />
+    <link rel="stylesheet" href="css/pages/taskhelper.css" />
+  </head>
+  <body>
+    <!-- Fond fixe -->
+    <div class="bg" aria-hidden="true"></div>
 
-  <!-- Fond fixe -->
-  <div class="bg" aria-hidden="true"></div>
-
-  <!-- ════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════
        HEADER — Navigation LumenLab
   ════════════════════════════════════════════ -->
-  <header>
-    <a href="index.html" class="brand" aria-label="LumenLab — Retour à l'accueil">
-      <span class="brand-mark" aria-hidden="true"></span>
-      <span class="brand-text">LUMEN<span class="lab">LAB</span></span>
-    </a>
-    <nav aria-label="Navigation principale">
-      <ul class="nav-links" role="list">
-        <li><a href="index.html">ACCUEIL</a></li>
-        <li><a href="index.html#projets">PROJETS</a></li>
-        <li><a href="index.html#vision">VISION</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+      <a href="index.html" class="brand" aria-label="LumenLab — Retour à l'accueil">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">LUMEN<span class="lab">LAB</span></span>
+      </a>
+      <nav aria-label="Navigation principale">
+        <ul class="nav-links" role="list">
+          <li><a href="index.html">ACCUEIL</a></li>
+          <li><a href="index.html#projets">PROJETS</a></li>
+          <li><a href="index.html#vision">VISION</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <!-- ════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════
        MAIN
   ════════════════════════════════════════════ -->
-  <main>
-    <div class="scene">
+    <main>
+      <div class="scene">
+        <!-- Carte principale -->
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 28 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="1"
+                y="1"
+                width="26"
+                height="26"
+                rx="6"
+                stroke="currentColor"
+                stroke-width="1.6"
+              />
+              <path
+                d="M8 14.5 L12.5 19 L20 10"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
 
-      <!-- Carte principale -->
-      <article class="card">
+          <h1 class="card-title">Task<span class="helper">Helper</span></h1>
+          <span class="card-tag">En cours de construction</span>
 
-        <div class="card-icon" aria-hidden="true">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="1" y="1" width="26" height="26" rx="6" stroke="currentColor" stroke-width="1.6" />
-            <path d="M8 14.5 L12.5 19 L20 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </div>
+          <p class="card-desc">
+            Un outil pensé pour <em>organiser</em><br />
+            vos projets et simplifier votre quotidien.
+          </p>
 
-        <h1 class="card-title">Task<span class="helper">Helper</span></h1>
-        <span class="card-tag">En cours de construction</span>
+          <a href="index.html#projet-taskhelper" class="cta" aria-label="Retour à LumenLab">
+            <span>Retour vers LumenLab</span>
+            <svg width="18" height="9" viewBox="0 0 18 9" fill="none" aria-hidden="true">
+              <path
+                d="M1 4.5 H16 M12.5 1 L16 4.5 L12.5 8"
+                stroke="currentColor"
+                stroke-width="1.3"
+                stroke-linecap="square"
+              />
+            </svg>
+          </a>
+        </article>
 
-        <p class="card-desc">
-          Un outil pensé pour <em>organiser</em><br />
-          vos projets et simplifier votre quotidien.
-        </p>
-
-        <a href="index.html#projet-taskhelper" class="cta" aria-label="Retour à LumenLab">
-          <span>Retour vers LumenLab</span>
-          <svg width="18" height="9" viewBox="0 0 18 9" fill="none" aria-hidden="true">
-            <path d="M1 4.5 H16 M12.5 1 L16 4.5 L12.5 8"
-                  stroke="currentColor" stroke-width="1.3" stroke-linecap="square" />
-          </svg>
-        </a>
-
-      </article>
-
-      <!-- Badge accessibilité -->
-      <aside class="badge" aria-label="Accessibilité au cœur de l'expérience">
-        <div class="badge-icon" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="16" cy="6" r="2.5" fill="currentColor" />
-            <path d="M8 12h16M16 12v12M11 18l-3 6M21 18l3 6"
-                  stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </div>
-        <p class="badge-text">Accessibilité au cœur de l'expérience</p>
-      </aside>
-
-    </div>
-  </main>
-
-</body>
+        <!-- Badge accessibilité -->
+        <aside class="badge" aria-label="Accessibilité au cœur de l'expérience">
+          <div class="badge-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="16" cy="6" r="2.5" fill="currentColor" />
+              <path
+                d="M8 12h16M16 12v12M11 18l-3 6M21 18l3 6"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <p class="badge-text">Accessibilité au cœur de l'expérience</p>
+        </aside>
+      </div>
+    </main>
+  </body>
 </html>

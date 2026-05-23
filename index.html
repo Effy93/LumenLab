@@ -1,413 +1,475 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- ── SEO ──────────────────────────────────────── -->
-  <title>LumenLab — Laboratoire d'idées, d'IA et de créations</title>
-  <meta name="description"
-        content="LumenLab est un laboratoire d'idées, d'IA et de créations fondé par Eva Philippo. Portail vers AstraLumen et CelestIA — deux univers qui explorent la conscience, la technologie et la créativité." />
-  <meta name="author" content="Eva Philippo" />
-  <meta name="robots" content="index, follow" />
+    <!-- ── SEO ──────────────────────────────────────── -->
+    <title>LumenLab — Laboratoire d'idées, d'IA et de créations</title>
+    <meta
+      name="description"
+      content="LumenLab est un laboratoire d'idées, d'IA et de créations fondé par Eva Philippo. Portail vers AstraLumen et CelestIA — deux univers qui explorent la conscience, la technologie et la créativité."
+    />
+    <meta name="author" content="Eva Philippo" />
+    <meta name="robots" content="index, follow" />
 
-  <!-- ── Open Graph ───────────────────────────────── -->
-  <meta property="og:type"        content="website" />
-  <meta property="og:locale"      content="fr_FR" />
-  <meta property="og:title"       content="LumenLab — Laboratoire d'idées, d'IA et de créations" />
-  <meta property="og:description" content="Un laboratoire d'idées, d'IA et de créations au service de l'avenir. Portail vers AstraLumen et CelestIA." />
-  <meta property="og:image"       content="assets/hero.jpg" />
+    <!-- ── Open Graph ───────────────────────────────── -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:title" content="LumenLab — Laboratoire d'idées, d'IA et de créations" />
+    <meta
+      property="og:description"
+      content="Un laboratoire d'idées, d'IA et de créations au service de l'avenir. Portail vers AstraLumen et CelestIA."
+    />
+    <meta property="og:image" content="assets/hero.jpg" />
 
-  <!-- ── Twitter Card ─────────────────────────────── -->
-  <meta name="twitter:card"        content="summary_large_image" />
-  <meta name="twitter:title"       content="LumenLab" />
-  <meta name="twitter:description" content="Un laboratoire d'idées, d'IA et de créations au service de l'avenir." />
-  <meta name="twitter:image"       content="assets/hero.jpg" />
+    <!-- ── Twitter Card ─────────────────────────────── -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LumenLab" />
+    <meta
+      name="twitter:description"
+      content="Un laboratoire d'idées, d'IA et de créations au service de l'avenir."
+    />
+    <meta name="twitter:image" content="assets/hero.jpg" />
 
-  <!-- ── Favicon ──────────────────────────────────── -->
-  <link rel="icon" type="image/png" href="assets/logo-lune.png" />
+    <!-- ── Favicon ──────────────────────────────────── -->
+    <link rel="icon" type="image/png" href="assets/logo-lune.png" />
 
-  <!-- ── Polices ──────────────────────────────────── -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=optional"
-        rel="stylesheet" />
+    <!-- ── Polices ──────────────────────────────────── -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=optional"
+      rel="stylesheet"
+    />
 
-  <!-- ── Préchargement hero ───────────────────────── -->
-  <link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high" />
+    <!-- ── Préchargement hero ───────────────────────── -->
+    <link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high" />
 
-  <!-- ── Styles (parallèle — pas de waterfall @import) ── -->
-  <link rel="stylesheet" href="css/base/variables.css" />
-  <link rel="stylesheet" href="css/base/reset.css" />
-  <link rel="stylesheet" href="css/base/typography.css" />
-  <link rel="stylesheet" href="css/layout/sections.css" />
-  <link rel="stylesheet" href="css/layout/header.css" />
-  <link rel="stylesheet" href="css/layout/footer.css" />
-  <link rel="stylesheet" href="css/components/buttons.css" />
-  <link rel="stylesheet" href="css/components/cards.css" />
-  <link rel="stylesheet" href="css/components/project-card.css" />
-  <link rel="stylesheet" href="css/components/badges.css" />
-  <link rel="stylesheet" href="css/pages/home.css" />
-  <link rel="stylesheet" href="css/utilities/animations.css" />
-  <link rel="stylesheet" href="css/utilities/responsive.css" />
+    <!-- ── Styles (parallèle — pas de waterfall @import) ── -->
+    <link rel="stylesheet" href="css/base/variables.css" />
+    <link rel="stylesheet" href="css/base/reset.css" />
+    <link rel="stylesheet" href="css/base/typography.css" />
+    <link rel="stylesheet" href="css/layout/sections.css" />
+    <link rel="stylesheet" href="css/layout/header.css" />
+    <link rel="stylesheet" href="css/layout/footer.css" />
+    <link rel="stylesheet" href="css/components/buttons.css" />
+    <link rel="stylesheet" href="css/components/cards.css" />
+    <link rel="stylesheet" href="css/components/project-card.css" />
+    <link rel="stylesheet" href="css/components/badges.css" />
+    <link rel="stylesheet" href="css/pages/home.css" />
+    <link rel="stylesheet" href="css/utilities/animations.css" />
+    <link rel="stylesheet" href="css/utilities/responsive.css" />
 
-  <!-- ── Données structurées (JSON-LD) ────────────── -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "LumenLab",
-    "description": "Laboratoire d'idées, d'IA et de créations",
-    "inLanguage": "fr",
-    "author": {
-      "@type": "Person",
-      "name": "Eva Philippo"
-    },
-    "hasPart": [
+    <!-- ── Données structurées (JSON-LD) ────────────── -->
+    <script type="application/ld+json">
       {
-        "@type": "WebPage",
-        "name": "AstraLumen",
-        "description": "Explorer l'introspection, la mémoire et la création pour éveiller le potentiel intérieur."
-      },
-      {
-        "@type": "WebPage",
-        "name": "CelestIA",
-        "description": "Construire des systèmes intelligents et des agents autonomes pour augmenter la créativité humaine."
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "LumenLab",
+        "description": "Laboratoire d'idées, d'IA et de créations",
+        "inLanguage": "fr",
+        "author": {
+          "@type": "Person",
+          "name": "Eva Philippo"
+        },
+        "hasPart": [
+          {
+            "@type": "WebPage",
+            "name": "AstraLumen",
+            "description": "Explorer l'introspection, la mémoire et la création pour éveiller le potentiel intérieur."
+          },
+          {
+            "@type": "WebPage",
+            "name": "CelestIA",
+            "description": "Construire des systèmes intelligents et des agents autonomes pour augmenter la créativité humaine."
+          }
+        ]
       }
-    ]
-  }
-  </script>
-</head>
+    </script>
+  </head>
 
-<body>
+  <body>
+    <!-- Lien d'évitement pour lecteurs d'écran -->
+    <a class="skip-link" href="#projets">Aller au contenu principal</a>
 
-  <!-- Lien d'évitement pour lecteurs d'écran -->
-  <a class="skip-link" href="#projets">Aller au contenu principal</a>
-
-  <!-- ════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════
        HEADER — Navigation fixe
         Typographie : Cormorant Garamond (serif) + Manrope (sans)
   ════════════════════════════════════════════════ -->
-  <header>
-    <nav class="nav" aria-label="Navigation principale">
-      <a href="#accueil" class="brand" aria-label="LumenLab — Accueil">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span class="brand-text">LUMEN<span class="lab">LAB</span></span>
-      </a>
-      <ul class="nav-links" role="list">
-        <li><a href="#accueil" class="active" aria-current="page">ACCUEIL</a></li>
-        <li><a href="#projets">PROJETS</a></li>
-        <li><a href="#vision">VISION</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="#accueil" class="brand" aria-label="LumenLab — Accueil">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-text">LUMEN<span class="lab">LAB</span></span>
+        </a>
+        <ul class="nav-links" role="list">
+          <li><a href="#accueil" class="active" aria-current="page">ACCUEIL</a></li>
+          <li><a href="#projets">PROJETS</a></li>
+          <li><a href="#vision">VISION</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <!-- ════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════
        MAIN
   ════════════════════════════════════════════════ -->
-  <main id="main">
+    <main id="main">
+      <!-- ── 01 HERO ───────────────────────────────── -->
+      <section class="hero stage" id="accueil" aria-labelledby="hero-heading">
+        <!-- Photographie pleine page -->
+        <div
+          class="hero-image"
+          role="img"
+          aria-label="Plage nocturne baignée de lumière dorée et d'eau turquoise sous la pleine lune"
+        ></div>
 
-    <!-- ── 01 HERO ───────────────────────────────── -->
-    <section class="hero stage" id="accueil" aria-labelledby="hero-heading">
+        <!-- Conteneur de particules (JS) -->
+        <div class="hero-scene" aria-hidden="true"></div>
 
-      <!-- Photographie pleine page -->
-      <div class="hero-image"
-           role="img"
-           aria-label="Plage nocturne baignée de lumière dorée et d'eau turquoise sous la pleine lune"></div>
+        <!-- Rayons lumineux dorés -->
+        <div class="ray r1" aria-hidden="true"></div>
+        <div class="ray r2" aria-hidden="true"></div>
+        <div class="ray r3" aria-hidden="true"></div>
 
-      <!-- Conteneur de particules (JS) -->
-      <div class="hero-scene" aria-hidden="true"></div>
+        <!-- Contenu textuel -->
+        <div class="hero-text">
+          <p class="eyebrow reveal" aria-hidden="true">Bienvenue dans</p>
 
-      <!-- Rayons lumineux dorés -->
-      <div class="ray r1" aria-hidden="true"></div>
-      <div class="ray r2" aria-hidden="true"></div>
-      <div class="ray r3" aria-hidden="true"></div>
+          <h1 id="hero-heading" class="reveal d1">
+            <span class="lumen">Lumen</span><span class="lab">Lab</span>
+          </h1>
 
-      <!-- Contenu textuel -->
-      <div class="hero-text">
-        <p class="eyebrow reveal" aria-hidden="true">Bienvenue dans</p>
-
-        <h1 id="hero-heading" class="reveal d1">
-          <span class="lumen">Lumen</span><span class="lab">Lab</span>
-        </h1>
-
-        <p class="lede reveal d2">
-          Un laboratoire d'idées, d'IA et de créations<br />
-          au service de l'avenir.
-        </p>
-
-        <a href="#projets" class="cta reveal d3">
-          <span>Explorer les projets</span>
-          <svg width="20" height="10" viewBox="0 0 20 10" fill="none" aria-hidden="true">
-            <path d="M1 5 H18 M14 1 L18 5 L14 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="square" />
-          </svg>
-        </a>
-      </div>
-
-      <!-- Indicateur de défilement -->
-      <div class="scroll-ind" aria-hidden="true">
-        <span class="line"></span>
-        <small>Scroll</small>
-      </div>
-
-    </section>
-
-    <!-- ── 02 PROJETS ─────────────────────────────── -->
-    <section class="projects stage" id="projets" aria-labelledby="projects-heading">
-      <div class="grain" aria-hidden="true"></div>
-
-      <h2 id="projects-heading" class="section-eyebrow reveal">Les Projets</h2>
-      <p class="section-sub reveal d1">Trois univers. Une même vision.</p>
-
-      <div class="project-grid">
-
-        <!-- ASTRALUMEN -->
-        <article class="project astra reveal d1" id="projet-astralumen">
-          <div class="project-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#5fd4d0" stroke-width="1.2">
-              <path d="M12 7 C 9 11, 9 13, 12 17 C 15 13, 15 11, 12 7 Z" />
-              <path d="M7 13 C 9 14, 11 14, 12 17 C 10 17, 8 16, 7 13 Z" />
-              <path d="M17 13 C 15 14, 13 14, 12 17 C 14 17, 16 16, 17 13 Z" />
-              <circle cx="12" cy="17" r="0.8" fill="#5fd4d0" />
-            </svg>
-          </div>
-
-          <div class="visual" aria-hidden="true">
-            <div class="lotus-scene"></div>
-          </div>
-
-          <h3>ASTRALUMEN</h3>
-          <p>
-            Explorer l'introspection,<br />
-            la mémoire et la création<br />
-            pour éveiller le potentiel intérieur.
+          <p class="lede reveal d2">
+            Un laboratoire d'idées, d'IA et de créations<br />
+            au service de l'avenir.
           </p>
-          <a class="link" href="astralumen.html" aria-label="Découvrir AstraLumen">
-            <span>Découvrir</span>
+
+          <a href="#projets" class="cta reveal d3">
+            <span>Explorer les projets</span>
             <svg width="20" height="10" viewBox="0 0 20 10" fill="none" aria-hidden="true">
-              <path d="M1 5 H18 M14 1 L18 5 L14 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="square" />
+              <path
+                d="M1 5 H18 M14 1 L18 5 L14 9"
+                stroke="currentColor"
+                stroke-width="1.4"
+                stroke-linecap="square"
+              />
             </svg>
           </a>
-        </article>
+        </div>
 
-        <!-- CELESTIA -->
-        <article class="project celest reveal d2" id="projet-celestia">
-          <div class="project-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#d9a85a" stroke-width="1.1">
-              <polygon points="12,4 19,8 19,16 12,20 5,16 5,8" />
-              <path d="M12 4 V 20 M5 8 L19 16 M19 8 L5 16" />
-            </svg>
-          </div>
+        <!-- Indicateur de défilement -->
+        <div class="scroll-ind" aria-hidden="true">
+          <span class="line"></span>
+          <small>Scroll</small>
+        </div>
+      </section>
 
-          <div class="visual" aria-hidden="true">
-            <div class="net-scene"></div>
-          </div>
+      <!-- ── 02 PROJETS ─────────────────────────────── -->
+      <section class="projects stage" id="projets" aria-labelledby="projects-heading">
+        <div class="grain" aria-hidden="true"></div>
 
-          <h3>CELESTIA</h3>
-          <p>
-            Construire des systèmes intelligents<br />
-            et des agents autonomes<br />
-            pour augmenter la créativité humaine.
-          </p>
-          <a class="link" href="celestia.html" aria-label="Découvrir CelestIA">
-            <span>Découvrir</span>
-            <svg width="20" height="10" viewBox="0 0 20 10" fill="none" aria-hidden="true">
-              <path d="M1 5 H18 M14 1 L18 5 L14 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="square" />
-            </svg>
-          </a>
-        </article>
+        <h2 id="projects-heading" class="section-eyebrow reveal">Les Projets</h2>
+        <p class="section-sub reveal d1">Trois univers. Une même vision.</p>
 
-        <!-- EXPÉRIMENTS -->
-        <article class="project exp reveal d3" id="projet-taskhelper">
-          <div class="project-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#f1ece1" stroke-width="1.1">
-              <path d="M10 4 H14 V 9 L 18 18 H 6 L 10 9 V 4 Z" />
-              <path d="M10 4 H14 M 8 14 H 16" />
-            </svg>
-          </div>
+        <div class="project-grid">
+          <!-- ASTRALUMEN -->
+          <article class="project astra reveal d1" id="projet-astralumen">
+            <div class="project-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#5fd4d0" stroke-width="1.2">
+                <path d="M12 7 C 9 11, 9 13, 12 17 C 15 13, 15 11, 12 7 Z" />
+                <path d="M7 13 C 9 14, 11 14, 12 17 C 10 17, 8 16, 7 13 Z" />
+                <path d="M17 13 C 15 14, 13 14, 12 17 C 14 17, 16 16, 17 13 Z" />
+                <circle cx="12" cy="17" r="0.8" fill="#5fd4d0" />
+              </svg>
+            </div>
 
-          <div class="visual" aria-hidden="true">
-            <div class="lab-scene"></div>
-            <!-- Vitrine isométrique SVG -->
-            <svg viewBox="0 0 400 280"
-                 style="position:absolute;inset:0;width:100%;height:100%"
-                 aria-hidden="true">
-              <defs>
-                <linearGradient id="glassG" x1="0" x2="0" y1="0" y2="1">
-                  <stop offset="0%"   stop-color="#f0c976" stop-opacity="0.05" />
-                  <stop offset="100%" stop-color="#d9a85a" stop-opacity="0.15" />
-                </linearGradient>
-              </defs>
-              <g opacity="0.95">
-                <polygon points="160,90 240,90 240,200 160,200"
-                         fill="url(#glassG)" stroke="#d9a85a" stroke-width="0.6" />
-                <polygon points="240,90 270,75 270,185 240,200"
-                         fill="url(#glassG)" stroke="#d9a85a" stroke-width="0.6" />
-                <polygon points="160,90 190,75 270,75 240,90"
-                         fill="url(#glassG)" stroke="#d9a85a" stroke-width="0.6" />
-              </g>
-              <circle cx="200" cy="160" r="6"
-                      fill="#f0c976"
-                      filter="drop-shadow(0 0 10px #f0c976)" />
-              <line x1="200" y1="160" x2="200" y2="100"
-                    stroke="#f0c976" stroke-width="0.8" opacity="0.7" />
-              <line x1="200" y1="160" x2="200" y2="220"
-                    stroke="#f0c976" stroke-width="0.5" opacity="0.4" />
-              <ellipse cx="200" cy="225" rx="80" ry="6"
-                       fill="#d9a85a" opacity="0.18" />
-            </svg>
-          </div>
+            <div class="visual" aria-hidden="true">
+              <div class="lotus-scene"></div>
+            </div>
 
-          <h3>EXPÉRIMENTS</h3>
-          <p>
-            Prototypes, tests et explorations<br />
-            technologiques pour façonner<br />
-            les idées de demain.
-          </p>
-          <a class="link" href="taskhelper.html" aria-label="Découvrir TaskHelper">
-            <span>Découvrir</span>
-            <svg width="20" height="10" viewBox="0 0 20 10" fill="none" aria-hidden="true">
-              <path d="M1 5 H18 M14 1 L18 5 L14 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="square" />
-            </svg>
-          </a>
-        </article>
+            <h3>ASTRALUMEN</h3>
+            <p>
+              Explorer l'introspection,<br />
+              la mémoire et la création<br />
+              pour éveiller le potentiel intérieur.
+            </p>
+            <a class="link" href="astralumen.html" aria-label="Découvrir AstraLumen">
+              <span>Découvrir</span>
+              <svg width="20" height="10" viewBox="0 0 20 10" fill="none" aria-hidden="true">
+                <path
+                  d="M1 5 H18 M14 1 L18 5 L14 9"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                  stroke-linecap="square"
+                />
+              </svg>
+            </a>
+          </article>
 
-      </div>
-    </section>
+          <!-- CELESTIA -->
+          <article class="project celest reveal d2" id="projet-celestia">
+            <div class="project-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#d9a85a" stroke-width="1.1">
+                <polygon points="12,4 19,8 19,16 12,20 5,16 5,8" />
+                <path d="M12 4 V 20 M5 8 L19 16 M19 8 L5 16" />
+              </svg>
+            </div>
 
-    <!-- ── 03 VISION ──────────────────────────────── -->
-    <section class="vision-section stage" id="vision" aria-labelledby="vision-heading">
+            <div class="visual" aria-hidden="true">
+              <div class="net-scene"></div>
+            </div>
 
-      <div class="vision">
+            <h3>CELESTIA</h3>
+            <p>
+              Construire des systèmes intelligents<br />
+              et des agents autonomes<br />
+              pour augmenter la créativité humaine.
+            </p>
+            <a class="link" href="celestia.html" aria-label="Découvrir CelestIA">
+              <span>Découvrir</span>
+              <svg width="20" height="10" viewBox="0 0 20 10" fill="none" aria-hidden="true">
+                <path
+                  d="M1 5 H18 M14 1 L18 5 L14 9"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                  stroke-linecap="square"
+                />
+              </svg>
+            </a>
+          </article>
 
-        <!-- Colonne texte -->
-        <div class="vision-text">
-          <p class="vision-eyebrow reveal">Ma Vision</p>
+          <!-- EXPÉRIMENTS -->
+          <article class="project exp reveal d3" id="projet-taskhelper">
+            <div class="project-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#f1ece1" stroke-width="1.1">
+                <path d="M10 4 H14 V 9 L 18 18 H 6 L 10 9 V 4 Z" />
+                <path d="M10 4 H14 M 8 14 H 16" />
+              </svg>
+            </div>
 
-          <h2 id="vision-heading" class="reveal d1">
-            <span class="l1">Créer.</span>
-            <span class="l2">Comprendre.</span>
-            <span class="l3">Relier.</span>
-          </h2>
+            <div class="visual" aria-hidden="true">
+              <div class="lab-scene"></div>
+              <!-- Vitrine isométrique SVG -->
+              <svg
+                viewBox="0 0 400 280"
+                style="position: absolute; inset: 0; width: 100%; height: 100%"
+                aria-hidden="true"
+              >
+                <defs>
+                  <linearGradient id="glassG" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" stop-color="#f0c976" stop-opacity="0.05" />
+                    <stop offset="100%" stop-color="#d9a85a" stop-opacity="0.15" />
+                  </linearGradient>
+                </defs>
+                <g opacity="0.95">
+                  <polygon
+                    points="160,90 240,90 240,200 160,200"
+                    fill="url(#glassG)"
+                    stroke="#d9a85a"
+                    stroke-width="0.6"
+                  />
+                  <polygon
+                    points="240,90 270,75 270,185 240,200"
+                    fill="url(#glassG)"
+                    stroke="#d9a85a"
+                    stroke-width="0.6"
+                  />
+                  <polygon
+                    points="160,90 190,75 270,75 240,90"
+                    fill="url(#glassG)"
+                    stroke="#d9a85a"
+                    stroke-width="0.6"
+                  />
+                </g>
+                <circle
+                  cx="200"
+                  cy="160"
+                  r="6"
+                  fill="#f0c976"
+                  filter="drop-shadow(0 0 10px #f0c976)"
+                />
+                <line
+                  x1="200"
+                  y1="160"
+                  x2="200"
+                  y2="100"
+                  stroke="#f0c976"
+                  stroke-width="0.8"
+                  opacity="0.7"
+                />
+                <line
+                  x1="200"
+                  y1="160"
+                  x2="200"
+                  y2="220"
+                  stroke="#f0c976"
+                  stroke-width="0.5"
+                  opacity="0.4"
+                />
+                <ellipse cx="200" cy="225" rx="80" ry="6" fill="#d9a85a" opacity="0.18" />
+              </svg>
+            </div>
 
-          <p class="reveal d2">
-            LumenLab est le pont entre la technologie,<br />
-            la conscience et la créativité.<br />
-            Un espace pour explorer, construire<br />
-            et laisser une empreinte lumineuse.
-          </p>
+            <h3>EXPÉRIMENTS</h3>
+            <p>
+              Découvrez <strong>TaskHelper</strong> ainsi que<br />
+              d’autres outils et expériences en<br />
+              cours de conception au sein du laboratoire.
+            </p>
+            <a class="link" href="taskhelper.html" aria-label="Découvrir TaskHelper">
+              <span>Découvrir</span>
+              <svg width="20" height="10" viewBox="0 0 20 10" fill="none" aria-hidden="true">
+                <path
+                  d="M1 5 H18 M14 1 L18 5 L14 9"
+                  stroke="currentColor"
+                  stroke-width="1.4"
+                  stroke-linecap="square"
+                />
+              </svg>
+            </a>
+          </article>
+        </div>
+      </section>
 
-          <!-- <a href="#projets" class="cta reveal d3">
+      <!-- ── 03 VISION ──────────────────────────────── -->
+      <section class="vision-section stage" id="vision" aria-labelledby="vision-heading">
+        <div class="vision">
+          <!-- Colonne texte -->
+          <div class="vision-text">
+            <p class="vision-eyebrow reveal">Ma Vision</p>
+
+            <h2 id="vision-heading" class="reveal d1">
+              <span class="l1">Créer.</span>
+              <span class="l2">Comprendre.</span>
+              <span class="l3">Relier.</span>
+            </h2>
+
+            <p class="reveal d2">
+              LumenLab est le pont entre la technologie,<br />
+              la conscience et la créativité.<br />
+              Un espace pour explorer, construire<br />
+              et laisser une empreinte lumineuse.
+            </p>
+
+            <!-- <a href="#projets" class="cta reveal d3">
             <span>En savoir plus</span>
             <svg width="20" height="10" viewBox="0 0 20 10" fill="none" aria-hidden="true">
               <path d="M1 5 H18 M14 1 L18 5 L14 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="square" />
             </svg>
           </a> -->
-        </div>
-
-        <!-- Colonne visuelle : orbite + labels + liste mobile -->
-        <div class="orbit-col">
-
-          <!-- Orbite avec étiquettes flottantes (desktop) -->
-          <div class="orbit reveal d2"
-               role="img"
-               aria-label="Orbites symbolisant les trois piliers de LumenLab : Technologie, Conscience et Créativité">
-
-            <div class="orbit-img" aria-hidden="true"></div>
-
-            <div class="orbit-label technologie gold" aria-hidden="true">
-              <span class="leader"></span>
-              <span class="dot"></span>
-              <span class="text">
-                <span class="title">Technologie</span>
-                <span class="sub">Explorer l'IA et ses possibilités</span>
-              </span>
-            </div>
-
-            <div class="orbit-label conscience cyan" aria-hidden="true">
-              <span class="leader"></span>
-              <span class="dot"></span>
-              <span class="text">
-                <span class="title">Conscience</span>
-                <span class="sub">Mieux se connaître, s'élever</span>
-              </span>
-            </div>
-
-            <div class="orbit-label creativite gold" aria-hidden="true">
-              <span class="leader"></span>
-              <span class="dot"></span>
-              <span class="text">
-                <span class="title">Créativité</span>
-                <span class="sub">Imaginer et créer sans limites</span>
-              </span>
-            </div>
-
           </div>
 
-          <!-- Liste des piliers (mobile uniquement) -->
-          <ul class="orbit-pillars reveal d3" aria-hidden="true">
-            <li class="orbit-pillar">
-              <span class="pillar-dot gold"></span>
-              <span class="pillar-content">
-                <span class="pillar-title">Technologie</span>
-                <span class="pillar-sub">Explorer l'IA et ses possibilités</span>
-              </span>
-            </li>
-            <li class="orbit-pillar">
-              <span class="pillar-dot cyan"></span>
-              <span class="pillar-content">
-                <span class="pillar-title">Conscience</span>
-                <span class="pillar-sub">Mieux se connaître, s'élever</span>
-              </span>
-            </li>
-            <li class="orbit-pillar">
-              <span class="pillar-dot gold"></span>
-              <span class="pillar-content">
-                <span class="pillar-title">Créativité</span>
-                <span class="pillar-sub">Imaginer et créer sans limites</span>
-              </span>
-            </li>
-          </ul>
+          <!-- Colonne visuelle : orbite + labels + liste mobile -->
+          <div class="orbit-col">
+            <!-- Orbite avec étiquettes flottantes (desktop) -->
+            <div
+              class="orbit reveal d2"
+              role="img"
+              aria-label="Orbites symbolisant les trois piliers de LumenLab : Technologie, Conscience et Créativité"
+            >
+              <div class="orbit-img" aria-hidden="true"></div>
 
+              <div class="orbit-label technologie gold" aria-hidden="true">
+                <span class="leader"></span>
+                <span class="dot"></span>
+                <span class="text">
+                  <span class="title">Technologie</span>
+                  <span class="sub">Explorer l'IA et ses possibilités</span>
+                </span>
+              </div>
+
+              <div class="orbit-label conscience cyan" aria-hidden="true">
+                <span class="leader"></span>
+                <span class="dot"></span>
+                <span class="text">
+                  <span class="title">Conscience</span>
+                  <span class="sub">Mieux se connaître, s'élever</span>
+                </span>
+              </div>
+
+              <div class="orbit-label creativite gold" aria-hidden="true">
+                <span class="leader"></span>
+                <span class="dot"></span>
+                <span class="text">
+                  <span class="title">Créativité</span>
+                  <span class="sub">Imaginer et créer sans limites</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- Liste des piliers (mobile uniquement) -->
+            <ul class="orbit-pillars reveal d3" aria-hidden="true">
+              <li class="orbit-pillar">
+                <span class="pillar-dot gold"></span>
+                <span class="pillar-content">
+                  <span class="pillar-title">Technologie</span>
+                  <span class="pillar-sub">Explorer l'IA et ses possibilités</span>
+                </span>
+              </li>
+              <li class="orbit-pillar">
+                <span class="pillar-dot cyan"></span>
+                <span class="pillar-content">
+                  <span class="pillar-title">Conscience</span>
+                  <span class="pillar-sub">Mieux se connaître, s'élever</span>
+                </span>
+              </li>
+              <li class="orbit-pillar">
+                <span class="pillar-dot gold"></span>
+                <span class="pillar-content">
+                  <span class="pillar-title">Créativité</span>
+                  <span class="pillar-sub">Imaginer et créer sans limites</span>
+                </span>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
+      </section>
+    </main>
 
-    </section>
-
-  </main>
-
-  <!-- ════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════
        FOOTER
   ════════════════════════════════════════════════ -->
-  <footer>
-    <a href="#accueil" class="footer-brand" aria-label="LumenLab — retour en haut">
-      <span class="brand-mark" style="width:16px;height:16px" aria-hidden="true"></span>
-      <span class="brand-text" style="font-size:14px">LUMEN<span class="lab">LAB</span></span>
-    </a>
-
-    <p>© <span id="copyright-year"></span> LumenLab · Eva Philippo — Tous droits réservés.</p>
-
-    <nav class="footer-social" aria-label="Réseaux sociaux">
-      <a href="#" aria-label="GitHub">
-        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7 0-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.8v2.6c0 .3.2.6.7.5A10 10 0 0 0 12 2z" />
-        </svg>
+    <footer>
+      <a href="#accueil" class="footer-brand" aria-label="LumenLab — retour en haut">
+        <span class="brand-mark" style="width: 16px; height: 16px" aria-hidden="true"></span>
+        <span class="brand-text" style="font-size: 14px">LUMEN<span class="lab">LAB</span></span>
       </a>
-      <a href="https://www.linkedin.com/in/eva-philippo-7264b7161/" aria-label="LinkedIn">
-        <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M4 4h4v4H4zM4 10h4v10H4zM10 10h4v2c.7-1.3 2-2.3 4-2.3 3 0 4 2 4 5V20h-4v-4.5c0-1.4-.5-2.3-1.8-2.3-1.3 0-2.2.9-2.2 2.3V20h-4z" />
-        </svg>
-      </a>
-      <a href="mailto:eva.projects.contact@gmail.com" aria-label="Envoyer un email">
-        <svg aria-hidden="true" width="16" height="14" viewBox="0 0 24 18" fill="none" stroke="currentColor" stroke-width="1.4">
-          <rect x="1" y="1" width="22" height="16" />
-          <path d="M1 3 L 12 11 L 23 3" />
-        </svg>
-      </a>
-    </nav>
-  </footer>
 
-  <script type="module" src="js/main.js"></script>
+      <p>© <span id="copyright-year"></span> LumenLab · Eva Philippo — Tous droits réservés.</p>
 
-</body>
+      <nav class="footer-social" aria-label="Réseaux sociaux">
+        <a href="#" aria-label="GitHub">
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7 0-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.8v2.6c0 .3.2.6.7.5A10 10 0 0 0 12 2z"
+            />
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/eva-philippo-7264b7161/" aria-label="LinkedIn">
+          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M4 4h4v4H4zM4 10h4v10H4zM10 10h4v2c.7-1.3 2-2.3 4-2.3 3 0 4 2 4 5V20h-4v-4.5c0-1.4-.5-2.3-1.8-2.3-1.3 0-2.2.9-2.2 2.3V20h-4z"
+            />
+          </svg>
+        </a>
+        <a href="mailto:eva.projects.contact@gmail.com" aria-label="Envoyer un email">
+          <svg
+            aria-hidden="true"
+            width="16"
+            height="14"
+            viewBox="0 0 24 18"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.4"
+          >
+            <rect x="1" y="1" width="22" height="16" />
+            <path d="M1 3 L 12 11 L 23 3" />
+          </svg>
+        </a>
+      </nav>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
 </html>

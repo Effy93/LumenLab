@@ -60,16 +60,14 @@ LumenLab/
 ├── assets/                   ← images et logos
 └── docs/
     ├── screenshots/
-    ├── perf/                 ← Lighthouse avant/après
     ├── content/              ← about, archi, rapport
-    └── prototype/
 ```
 
 ## Projets portails
 
 - **AstraLumen** — introspection, mémoire, création
 - **CelestIA** — IA, agents autonomes, créativité augmentée
-- **Expériments** — prototypes et explorations technologiques
+- **Expériments** — prototypes et explorations technologiques; TaskHelper
 
 ## Design
 

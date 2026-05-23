@@ -1,17 +1,17 @@
 :root {
-  --bg:          #050810;
-  --bg-2:        #070b16;
-  --graphite:    #0e1220;
-  --line:        rgba(217,168,90,.18);
-  --line-soft:   rgba(241,236,225,.08);
-  --gold:        #d9a85a;
-  --gold-hi:     #f0c976;
-  --gold-deep:   #8b6a2f;
-  --cyan:        #5fd4d0;
-  --cyan-soft:   rgba(95,212,208,.45);
-  --ink:         #f1ece1;
-  --ink-dim:     #a8a496;
-  --ink-mute:    #6e6c63;
-  --serif:       "Cormorant Garamond", "Times New Roman", serif;
-  --sans:        "Manrope", system-ui, sans-serif;
+  --bg: #050810;
+  --bg-2: #070b16;
+  --graphite: #0e1220;
+  --line: rgba(217, 168, 90, 0.18);
+  --line-soft: rgba(241, 236, 225, 0.08);
+  --gold: #d9a85a;
+  --gold-hi: #f0c976;
+  --gold-deep: #8b6a2f;
+  --cyan: #5fd4d0;
+  --cyan-soft: rgba(95, 212, 208, 0.45);
+  --ink: #f1ece1;
+  --ink-dim: #a8a496;
+  --ink-mute: #6e6c63;
+  --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --sans: 'Manrope', system-ui, sans-serif;
 }

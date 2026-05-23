@@ -1,30 +1,49 @@
 /* ─── Base reset ─────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-a { color: inherit; text-decoration: none; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
 body {
-  font-family:            var(--sans);
-  color:                  var(--ink);
+  font-family: var(--sans);
+  color: var(--ink);
   -webkit-font-smoothing: antialiased;
-  text-rendering:         optimizeLegibility;
+  text-rendering: optimizeLegibility;
 }
 
 /* ─── Sparkle container ──────────────────────────── */
 #sparkles {
-  position:       fixed;
-  inset:          0;
+  position: fixed;
+  inset: 0;
   pointer-events: none;
-  z-index:        1;
-  overflow:       hidden;
+  z-index: 1;
+  overflow: hidden;
 }
 .spark {
-  position:      absolute;
+  position: absolute;
   border-radius: 50%;
-  opacity:       0;
-  animation:     sparkFloat linear infinite;
+  opacity: 0;
+  animation: sparkFloat linear infinite;
 }
 @keyframes sparkFloat {
-  0%   { opacity: 0; transform: translate(0, 0) scale(.6); }
-  12%  { opacity: .75; }
-  88%  { opacity: .5; }
-  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1); }
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.6);
+  }
+  12% {
+    opacity: 0.75;
+  }
+  88% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) scale(1);
+  }
 }
