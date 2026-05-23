@@ -18,7 +18,7 @@
     grid-template-columns: 1fr;
     padding-top:           120px;
   }
-  .projects { padding: 120px 28px 80px; }
+  .projects { padding: 120px 28px 80px; overflow: hidden; }
   .project-grid {
     grid-template-columns: 1fr;
     gap:                   18px;
