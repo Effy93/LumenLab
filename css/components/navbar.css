@@ -76,7 +76,7 @@ header {
 /* ─── Mobile ≤480px ───────────────────────────────── */
 @media (max-width: 480px) {
   header       { padding: 0 16px; height: 50px; }
-  .brand       { font-size: 12px; gap: 8px; }
+  .brand       { font-size: 12px; }
   .brand-mark  { width: 12px; height: 12px; }
   .nav-links   { gap: 12px; }
   .nav-links a { font-size: 9px; letter-spacing: .12em; }

@@ -78,4 +78,4 @@ Typographies : Cormorant Garamond (serif) + Manrope (sans-serif)
 
 ## Auteure
 
-Eva Philippo — [philippoeva2@gmail.com](mailto:philippoeva2@gmail.com)
+Eva Philippo -
