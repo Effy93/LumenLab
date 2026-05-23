@@ -6,7 +6,7 @@
   <title>CelestIA — Un projet en cours de construction</title>
   <meta name="description" content="CelestIA prend forme. Agents intelligents, création collaborative et organisation au service de la vision LumenLab." />
   <meta name="robots" content="noindex, nofollow" />
-  <link rel="icon" type="image/png" href="assets/vision-orbit.png" />
+  <!-- <link rel="icon" type="image/png" href="assets/vision-orbit.png" /> -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -155,22 +155,20 @@
     }
     .nav-links a:hover { color: var(--ink); }
 
-    /* ─── Main : centré, plein écran, pas de scroll ─ */
+    /* ─── Main : conteneur relatif, plein écran ─── */
     main {
       position: relative;
       z-index: 5;
       height: calc(100vh - 64px);
       margin-top: 64px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: clamp(10px, 2vh, 20px);
-      padding: 12px clamp(24px, 5vw, 60px);
+      pointer-events: none;
     }
 
-    /* ─── Titre compact ─────────────────────────── */
+    /* ─── Titre : ancré en haut, centré ─────────── */
     .page-title {
+      position: absolute;
+      top: clamp(20px, 4vh, 48px);
+      left: 0; right: 0;
       font-family: var(--serif);
       font-weight: 300;
       font-size: clamp(36px, 5.5vw, 64px);
@@ -178,44 +176,51 @@
       color: var(--ink);
       letter-spacing: -.01em;
       text-align: center;
+      pointer-events: auto;
       opacity: 0;
       animation: fadeUp .9s cubic-bezier(.2,.7,.2,1) .3s forwards;
     }
     .page-title .ia { color: var(--gold); font-style: italic; }
 
     .page-sub {
+      position: absolute;
+      top: calc(clamp(20px, 4vh, 48px) + clamp(38px, 6vw, 68px) + 8px);
+      left: 0; right: 0;
       font-family: var(--serif);
       font-size: clamp(12px, 1.4vw, 15px);
       font-weight: 300;
       color: var(--ink-mute);
       letter-spacing: .06em;
       text-align: center;
+      pointer-events: auto;
       opacity: 0;
       animation: fadeUp .9s cubic-bezier(.2,.7,.2,1) .5s forwards;
     }
 
-    /* ─── Système orbital ───────────────────────── */
-    /*
-      Conteneur : 360×360px, centre à (180,180)
-      Rayon d'orbite : 132px
-      Formule positions (θ clockwise depuis le haut) :
-        x = 180 + 132·sin(θ)   left = x − portrait_r
-        y = 180 − 132·cos(θ)   top  = y − portrait_r
-
-      Charles  300° → x≈66   y≈114   left=32  top=80
-      Astra     60° → x≈294  y≈114   left=260 top=80
-      Caroline 180° → x=180  y=312   left=146 top=278
-
-      Portrait diameter = 68px (r=34)
-      vision-img diameter = 120px (r=60) → left=120, top=120
-    */
+    /* ─── Système orbital — mobile first ───────────
+      Base mobile : système 300×300, centre (150,150)
+      Rayon orbite : 105px  |  portrait : 82px (r=41)
+        x = cx + r·sin(θ)   left = x − r_portrait
+        y = cy − r·cos(θ)   top  = y − r_portrait
+      Charles  300° → left=18   top=57
+      Astra     60° → left=200  top=57
+      Caroline 180° → left=109  top=214
+      Centre orbe : 60px  → left=120  top=120
+    ──────────────────────────────────────────── */
     .orbital-system {
-      position: relative;
-      width: 360px;
-      height: 360px;
-      flex-shrink: 0;
+      position: fixed;
+      top: 50vh;
+      left: 50vw;
+      width: 300px;
+      height: 300px;
+      /* centrage exact + fadeUp combinés dans un seul keyframe */
       opacity: 0;
-      animation: fadeUp 1s cubic-bezier(.2,.7,.2,1) .7s forwards;
+      animation: fadeUpOrbit 1s cubic-bezier(.2,.7,.2,1) .7s forwards;
+    }
+
+    @keyframes fadeUpOrbit {
+      from { opacity: 0; transform: translate(-50%, calc(-50% + 14px)); }
+      to   { opacity: 1; transform: translate(-50%, -50%); }
     }
 
     /* Anneau décoratif statique */
@@ -226,7 +231,7 @@
       border: 1px solid rgba(217,168,90,.10);
     }
 
-    /* Arc doré — sens horaire, plus subtil pour ne pas écraser le fond */
+    /* Arc doré — sens horaire */
     .deco-arc-gold {
       position: absolute;
       inset: 0;
@@ -251,27 +256,6 @@
       animation: spin 20s linear infinite reverse;
     }
 
-    /* Centre CSS — orbe pulsant, transparent pour laisser briller le fond */
-    .system-center {
-      position: absolute;
-      width: 64px; height: 64px;
-      left: 148px; top: 148px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 38% 38%,
-        rgba(240,201,118,.22) 0%,
-        rgba(217,168,90,.08) 55%,
-        transparent 80%);
-      box-shadow:
-        0 0 24px rgba(217,168,90,.35),
-        0 0 48px rgba(217,168,90,.15),
-        0 0 80px rgba(217,168,90,.06);
-      animation: pulse 4s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1);   opacity: .85; }
-      50%       { transform: scale(1.18); opacity: 1;   }
-    }
 
     /* Conteneur des satellites — tourne en continu */
     .orbit-spin {
@@ -280,16 +264,16 @@
       animation: spin 28s linear infinite;
     }
 
-    /* Portrait satellite — cercle clippé, contre-rotation pour rester droit */
+    /* Portrait satellite — contre-rotation pour rester droit */
     .satellite {
       position: absolute;
-      width: 68px; height: 68px;
+      width: 82px; height: 82px;
       border-radius: 50%;
       overflow: hidden;
       border: 1.5px solid var(--gold-line);
       box-shadow:
-        0 0 14px rgba(217,168,90,.22),
-        0 0 28px rgba(217,168,90,.08);
+        0 0 16px rgba(217,168,90,.28),
+        0 0 32px rgba(217,168,90,.10);
       background: rgba(2,4,12,.55);
       animation: spin 28s linear infinite reverse;
     }
@@ -299,42 +283,13 @@
       object-position: center top;
     }
 
-    /* Charles à 300° */
-    .satellite-charles  { left: 32px;  top: 80px; }
-    /* Astra à 60° */
-    .satellite-astra    { left: 260px; top: 80px; }
-    /* Caroline à 180° */
-    .satellite-caroline { left: 146px; top: 278px; }
+    /* Positions mobile (rayon 105, r_portrait 41) */
+    .satellite-charles  { left: 18px;  top: 57px; }
+    .satellite-astra    { left: 200px; top: 57px; }
+    .satellite-caroline { left: 109px; top: 214px; }
 
-    /* ─── Légende statique ──────────────────────── */
-    .agents-legend {
-      display: flex;
-      gap: clamp(20px, 4vw, 56px);
-      opacity: 0;
-      animation: fadeUp .9s cubic-bezier(.2,.7,.2,1) 1s forwards;
-    }
 
-    .legend-item { text-align: center; }
-
-    .legend-name {
-      font-family: var(--sans);
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: .32em;
-      color: var(--gold);
-      text-transform: uppercase;
-    }
-
-    .legend-role {
-      font-family: var(--serif);
-      font-size: clamp(11px, 1vw, 13px);
-      font-weight: 300;
-      font-style: italic;
-      color: var(--ink-mute);
-      margin-top: 3px;
-    }
-
-    /* ─── Bouton retour ─────────────────────────── */
+    /* ─── Bouton retour : ancré en bas, centré ──── */
     .cta {
       display: inline-flex;
       align-items: center;
@@ -348,12 +303,22 @@
       font-weight: 600;
       text-transform: uppercase;
       background: transparent;
-      position: relative;
+      position: absolute;
+      bottom: clamp(20px, 4vh, 40px);
+      left: 50%;
+      transform: translateX(-50%);
       overflow: hidden;
       transition: color .4s;
       cursor: pointer;
+      pointer-events: auto;
+      white-space: nowrap;
       opacity: 0;
-      animation: fadeUp .9s cubic-bezier(.2,.7,.2,1) 1.15s forwards;
+      animation: fadeUpCta .9s cubic-bezier(.2,.7,.2,1) 1.15s forwards;
+    }
+
+    @keyframes fadeUpCta {
+      from { opacity: 0; transform: translateX(-50%) translateY(14px); }
+      to   { opacity: 1; transform: translateX(-50%) translateY(0); }
     }
     .cta::before {
       content: "";
@@ -380,38 +345,42 @@
       to   { transform: rotate(360deg); }
     }
 
+    /* ─── Desktop ≥600px ───────────────────────────
+      Système 440×440, centre (220,220)
+      Rayon orbite : 155px  |  portrait : 96px (r=48)
+      Charles  300° → left=38   top=95
+      Astra     60° → left=306  top=95
+      Caroline 180° → left=172  top=327
+      Centre orbe : 72px  → left=184  top=184
+    ─────────────────────────────────────────────── */
+    @media (min-width: 600px) {
+      /* Système 440×440, centre (220,220), rayon 155px, portrait 96px (r=48) */
+      .orbital-system { width: 440px; height: 440px; }
+      .system-center  { width: 72px; height: 72px; left: 184px; top: 184px; }
+      .satellite      { width: 96px; height: 96px; }
+      .satellite-charles  { left: 38px;  top: 95px; }
+      .satellite-astra    { left: 306px; top: 95px; }
+      .satellite-caroline { left: 172px; top: 327px; }
+    }
+
     /* ─── Reduced motion ────────────────────────── */
     @media (prefers-reduced-motion: reduce) {
-      .page-title, .page-sub, .orbital-system, .agents-legend, .cta {
-        opacity: 1 !important; transform: none !important; animation: none !important;
+      .page-title, .page-sub, .cta {
+        opacity: 1 !important; animation: none !important;
       }
-      .deco-arc-gold, .deco-arc-cyan, .orbit-spin, .satellite, .system-center { animation: none !important; }
+      .orbital-system {
+        opacity: 1 !important;
+        animation: none !important;
+        transform: translate(-50%, -50%) !important;
+      }
+      .cta { transform: translateX(-50%) !important; }
+      .deco-arc-gold, .deco-arc-cyan, .orbit-spin, .satellite { animation: none !important; }
       .spark { display: none !important; }
       .cta, .cta::before { transition: none !important; }
     }
 
-    /* ─── Mobile ────────────────────────────────── */
-    @media (max-width: 480px) {
-      header { padding: 0 16px; }
-      .brand { font-size: 16px; gap: 8px; }
-      .nav-links { gap: 14px; font-size: 9px; letter-spacing: .16em; }
-
-      /* Orbital plus petit */
-      .orbital-system { width: 280px; height: 280px; }
-      .system-center  { width: 50px; height: 50px; left: 115px; top: 115px; }
-
-      /* Repositionnement satellites à l'échelle ~0.78 */
-      /* Rayon : 132×0.78≈103, portrait : 68×0.78≈53 (r≈27) */
-      .satellite { width: 52px; height: 52px; }
-      .satellite-charles  { left: 24px;  top: 61px; }
-      .satellite-astra    { left: 204px; top: 61px; }
-      .satellite-caroline { left: 114px; top: 218px; }
-
-      main { gap: clamp(8px, 1.5vh, 16px); }
-    }
-
     /* Sur écrans très courts : autoriser le scroll minimal */
-    @media (max-height: 640px) {
+    @media (max-height: 580px) {
       html, body { overflow: auto; }
     }
   </style>
@@ -458,9 +427,6 @@
       <div class="deco-arc-gold"  aria-hidden="true"></div>
       <div class="deco-arc-cyan"  aria-hidden="true"></div>
 
-      <!-- Centre : orbe CSS pulsant -->
-      <div class="system-center" aria-hidden="true"></div>
-
       <!-- Portraits en orbite -->
       <div class="orbit-spin" aria-hidden="true">
         <div class="satellite satellite-charles">
@@ -474,22 +440,6 @@
         </div>
       </div>
 
-    </div>
-
-    <!-- Légende fixe : noms et rôles -->
-    <div class="agents-legend" role="list" aria-label="Les intelligences de CelestIA">
-      <div class="legend-item" role="listitem">
-        <p class="legend-name">Charles</p>
-        <p class="legend-role">UI-UX &amp; Architecte</p>
-      </div>
-      <div class="legend-item" role="listitem">
-        <p class="legend-name">Astra</p>
-        <p class="legend-role">Inspiration &amp; Création</p>
-      </div>
-      <div class="legend-item" role="listitem">
-        <p class="legend-name">Caroline</p>
-        <p class="legend-role">Organisation &amp; Gestion</p>
-      </div>
     </div>
 
     <!-- Bouton retour -->
