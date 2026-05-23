@@ -884,7 +884,10 @@ button:focus-visible {
 
 @media (max-width: 480px) {
   .nav        { padding: 14px 16px; }
-  .brand      { font-size: 14px; gap: 8px; }
-  .brand-mark { display: none; }
+  .brand-text      { font-size: 12px; gap: 8px; }
   .nav-links  { gap: 12px; font-size: 9px; letter-spacing: .12em; }
+  .brand-mark {
+  width: 12px;
+  height: 12px;
+}
 }
