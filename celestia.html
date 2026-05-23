@@ -353,6 +353,13 @@
       Caroline 180° → left=172  top=327
       Centre orbe : 72px  → left=184  top=184
     ─────────────────────────────────────────────── */
+    @media (max-width: 480px) {
+      header      { padding: 0 16px; }
+      .brand      { font-size: 14px; gap: 8px; }
+      .brand-mark { display: none; }
+      .nav-links  { gap: 12px; font-size: 9px; letter-spacing: .12em; }
+    }
+
     @media (min-width: 600px) {
       /* Système 440×440, centre (220,220), rayon 155px, portrait 96px (r=48) */
       .orbital-system { width: 440px; height: 440px; }
@@ -403,6 +410,7 @@
     </a>
     <nav aria-label="Navigation principale">
       <ul class="nav-links" role="list">
+        <li><a href="index.html">ACCUEIL</a></li>
         <li><a href="index.html#projets">PROJETS</a></li>
         <li><a href="index.html#vision">VISION</a></li>
       </ul>
