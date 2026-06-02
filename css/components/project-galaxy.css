@@ -1,0 +1,631 @@
+/* ════════════════════════════════════════════════════════
+   PROJECT GALAXY — Section carrousel galactique
+   ════════════════════════════════════════════════════════ */
+
+/* ─── SECTION ──────────────────────────────────────────── */
+.projects-galaxy {
+  padding: 140px 0 100px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ─── BACKGROUND GALACTIQUE ────────────────────────────── */
+.galaxy-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.gx-star {
+  position: absolute;
+  border-radius: 50%;
+  background: #ffffff;
+  animation: gxTwinkle var(--star-dur, 3s) ease-in-out infinite alternate;
+}
+
+.galaxy-orbits {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.galaxy-orbits.visible {
+  opacity: 1;
+}
+
+/* ─── EN-TÊTE SECTION ──────────────────────────────────── */
+.galaxy-header {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+/* ─── WRAPPER CARROUSEL ────────────────────────────────── */
+.galaxy-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Glow central réactif à l'univers actif */
+.galaxy-carousel-wrapper::before {
+  content: '';
+  position: absolute;
+  bottom: 96px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 110px;
+  border-radius: 50%;
+  filter: blur(34px);
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(ellipse, rgba(217, 168, 90, 0.10) 0%, transparent 70%);
+  transition: background 0.7s ease;
+}
+
+.projects-galaxy[data-accent='astra'] .galaxy-carousel-wrapper::before {
+  background: radial-gradient(ellipse, rgba(95, 212, 208, 0.12) 0%, transparent 70%);
+}
+.projects-galaxy[data-accent='gold'] .galaxy-carousel-wrapper::before {
+  background: radial-gradient(ellipse, rgba(217, 168, 90, 0.12) 0%, transparent 70%);
+}
+.projects-galaxy[data-accent='blue'] .galaxy-carousel-wrapper::before {
+  background: radial-gradient(ellipse, rgba(138, 179, 232, 0.11) 0%, transparent 70%);
+}
+.projects-galaxy[data-accent='neutral'] .galaxy-carousel-wrapper::before {
+  background: radial-gradient(ellipse, rgba(197, 191, 176, 0.08) 0%, transparent 70%);
+}
+
+/* ─── PISTE CARROUSEL ──────────────────────────────────── */
+.galaxy-carousel {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  perspective: 1400px;
+  cursor: grab;
+  z-index: 1;
+}
+.galaxy-carousel.is-dragging {
+  cursor: grabbing;
+}
+
+/* ════════════════════════════════════════════════════════
+   GALAXY CARD
+   ════════════════════════════════════════════════════════ */
+.galaxy-card {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -170px;
+  width: 340px;
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(9, 12, 22, 0.94);
+  border: 1px solid rgba(217, 168, 90, 0.11);
+  border-radius: 12px;
+  overflow: hidden;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  transition: border-color 0.55s ease;
+  outline: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Focus clavier */
+.galaxy-card:focus-visible {
+  outline: 2px solid var(--gc-accent, var(--gold));
+  outline-offset: 4px;
+}
+
+/* ─── Accents par univers ──────────────────────────────── */
+.galaxy-card.g-astra  { --gc-accent: #5fd4d0; --gc-accent-rgb: 95, 212, 208; }
+.galaxy-card.g-gold   { --gc-accent: #d9a85a; --gc-accent-rgb: 217, 168, 90; }
+.galaxy-card.g-blue   { --gc-accent: #8ab3e8; --gc-accent-rgb: 138, 179, 232; }
+.galaxy-card.g-neutral { --gc-accent: #c5bfb0; --gc-accent-rgb: 197, 191, 176; }
+
+/* ─── Carte active ─────────────────────────────────────── */
+.galaxy-card.g-astra.is-active {
+  border-color: rgba(95, 212, 208, 0.32);
+  box-shadow:
+    0 0 0 1px rgba(95, 212, 208, 0.07),
+    0 8px 40px rgba(95, 212, 208, 0.09),
+    0 24px 80px rgba(0, 0, 0, 0.6);
+}
+.galaxy-card.g-gold.is-active {
+  border-color: rgba(217, 168, 90, 0.32);
+  box-shadow:
+    0 0 0 1px rgba(217, 168, 90, 0.07),
+    0 8px 40px rgba(217, 168, 90, 0.09),
+    0 24px 80px rgba(0, 0, 0, 0.6);
+}
+.galaxy-card.g-blue.is-active {
+  border-color: rgba(138, 179, 232, 0.30);
+  box-shadow:
+    0 0 0 1px rgba(138, 179, 232, 0.06),
+    0 8px 40px rgba(138, 179, 232, 0.08),
+    0 24px 80px rgba(0, 0, 0, 0.6);
+}
+.galaxy-card.g-neutral.is-active {
+  border-color: rgba(197, 191, 176, 0.22);
+  box-shadow:
+    0 0 0 1px rgba(197, 191, 176, 0.05),
+    0 8px 40px rgba(197, 191, 176, 0.07),
+    0 24px 80px rgba(0, 0, 0, 0.6);
+}
+
+/* ─── Zone visuelle ────────────────────────────────────── */
+.gc-visual {
+  position: relative;
+  height: 200px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* Fondu en bas du visuel */
+.gc-visual-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: linear-gradient(to bottom, transparent, rgba(9, 12, 22, 0.94));
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Léger zoom sur image active */
+.galaxy-card.is-active .lotus-scene,
+.galaxy-card.is-active .net-scene {
+  animation: gxImgBreathe 9s ease-in-out infinite alternate;
+}
+
+/* ─── Scènes visuelles ─────────────────────────────────── */
+
+/* AstraLumen — réutilise les styles de project-card.css */
+.galaxy-card .lotus-scene {
+  position: absolute;
+  inset: 0;
+  background-image: url('../../assets/astralumen-lotus.png');
+  background-size: 104%;
+  background-position: center;
+}
+/* CelestIA */
+.galaxy-card .net-scene {
+  position: absolute;
+  inset: 0;
+  background-image: url('../../assets/celestia-network.png');
+  background-size: 104%;
+  background-position: center;
+}
+/* Autres projets */
+.galaxy-card .lab-scene {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #0a0d14, #04060a);
+}
+.galaxy-card .lab-scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(217, 168, 90, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(217, 168, 90, 0.06) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 70%, #000, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 70%, #000, transparent 80%);
+}
+
+/* VA-Rebirth — spirale mystique */
+.spiral-scene {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 44%, #121640 0%, #080c25 45%, #040610 100%);
+}
+.spiral-scene svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  animation: gxSpiralSpin 28s linear infinite;
+  transform-origin: center center;
+}
+
+/* Halo bleuté au centre de la spirale */
+.spiral-scene::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 42% at 50% 50%, rgba(138, 179, 232, 0.22) 0%, transparent 68%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* À venir — nébuleuse ivoire */
+.nebula-scene {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, #0d0d1e 0%, #05050c 100%);
+}
+.nebula-scene::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 52% 34% at 50% 48%, rgba(241, 236, 225, 0.09) 0%, transparent 68%),
+    radial-gradient(ellipse 26% 20% at 28% 68%, rgba(217, 168, 90, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 22% 28% at 74% 30%, rgba(95, 212, 208, 0.05) 0%, transparent 60%);
+  animation: gxNebulaBreath 7s ease-in-out infinite alternate;
+}
+.nebula-scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, rgba(241,236,225,0.4), transparent),
+    radial-gradient(1px 1px at 60% 20%, rgba(241,236,225,0.3), transparent),
+    radial-gradient(1px 1px at 80% 55%, rgba(241,236,225,0.35), transparent),
+    radial-gradient(1px 1px at 40% 72%, rgba(241,236,225,0.25), transparent),
+    radial-gradient(1px 1px at 70% 80%, rgba(241,236,225,0.3), transparent);
+}
+
+/* ─── Contenu card ─────────────────────────────────────── */
+.gc-body {
+  flex: 1;
+  padding: 20px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.gc-meta {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 14px;
+  flex-shrink: 0;
+}
+
+.gc-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--gc-accent-rgb, 217, 168, 90), 0.22);
+  background: rgba(var(--gc-accent-rgb, 217, 168, 90), 0.05);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.gc-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.gc-category {
+  font-size: 9px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--gc-accent, var(--gold));
+  font-weight: 600;
+  font-family: var(--sans);
+}
+
+.gc-status-badge {
+  margin-left: auto;
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink-mute);
+  font-family: var(--sans);
+  padding: 3px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.gc-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: 0.18em;
+  color: var(--gc-accent, var(--gold));
+  margin: 0 0 5px;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  line-height: 1.2;
+}
+
+.gc-subtitle {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  font-weight: 500;
+  margin: 0 0 14px;
+  font-family: var(--sans);
+  flex-shrink: 0;
+}
+
+.gc-desc {
+  font-size: 13.5px;
+  line-height: 1.72;
+  color: var(--ink-dim);
+  font-weight: 300;
+  margin: 0 0 20px;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.gc-footer {
+  display: flex;
+  align-items: center;
+  min-height: 24px;
+  flex-shrink: 0;
+}
+
+/* Points décoratifs pour les cards sans CTA */
+.gc-footer--dots::after {
+  content: '· · ·';
+  color: var(--ink-mute);
+  letter-spacing: 0.45em;
+  font-size: 13px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.galaxy-card.is-active .gc-footer--dots::after {
+  opacity: 1;
+}
+
+/* ─── CTA link ─────────────────────────────────────────── */
+.gc-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--gc-accent, var(--gold));
+  border-bottom: 1px solid var(--gc-accent, var(--gold));
+  padding-bottom: 3px;
+  font-family: var(--sans);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.4s ease,
+    gap 0.3s ease;
+}
+.gc-cta svg {
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+.galaxy-card.is-active .gc-cta {
+  opacity: 1;
+  pointer-events: auto;
+}
+.galaxy-card.is-active .gc-cta:hover {
+  gap: 14px;
+}
+.galaxy-card.is-active .gc-cta:hover svg {
+  transform: translateX(3px);
+}
+.gc-cta:focus-visible {
+  outline: 2px solid var(--gc-accent, var(--gold));
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* ════════════════════════════════════════════════════════
+   CONTRÔLES
+   ════════════════════════════════════════════════════════ */
+.galaxy-controls {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 36px;
+  position: relative;
+  z-index: 3;
+}
+
+.galaxy-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(12, 16, 28, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--ink-dim);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.25s ease;
+}
+.galaxy-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: scale(1.1);
+}
+.galaxy-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+.galaxy-btn:active {
+  transform: scale(0.96);
+}
+
+.galaxy-pagination {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.10em;
+  color: var(--ink-dim);
+  min-width: 54px;
+  justify-content: center;
+}
+
+.gx-current {
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+}
+
+.gx-sep {
+  color: var(--ink-mute);
+  font-size: 11px;
+}
+
+/* ─── Hint ─────────────────────────────────────────────── */
+.galaxy-hint {
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.65;
+  pointer-events: none;
+}
+.galaxy-hint::before,
+.galaxy-hint::after {
+  content: '';
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+/* ════════════════════════════════════════════════════════
+   KEYFRAMES
+   ════════════════════════════════════════════════════════ */
+@keyframes gxTwinkle {
+  from { opacity: var(--star-opacity, 0.3); }
+  to   { opacity: calc(var(--star-opacity, 0.3) * 0.25); }
+}
+
+@keyframes gxSpiralSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes gxNebulaBreath {
+  from { opacity: 0.7; transform: scale(1); }
+  to   { opacity: 1;   transform: scale(1.05); }
+}
+
+@keyframes gxImgBreathe {
+  from { background-size: 104%; }
+  to   { background-size: 110%; }
+}
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════════ */
+
+/* Tablette */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .galaxy-card {
+    width: 300px;
+    margin-left: -150px;
+    height: 460px;
+  }
+  .gc-visual { height: 180px; }
+  .gc-title { font-size: 20px; }
+}
+
+/* Grand desktop */
+@media (min-width: 1400px) {
+  .galaxy-card {
+    width: 360px;
+    margin-left: -180px;
+    height: 500px;
+  }
+  .gc-visual { height: 218px; }
+  .gc-title  { font-size: 24px; }
+  .gc-desc   { font-size: 14px; }
+  .galaxy-carousel { height: 525px; }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .projects-galaxy {
+    padding: 80px 0 64px;
+  }
+  .galaxy-header {
+    margin-bottom: 36px;
+    padding: 0 24px;
+  }
+  .galaxy-carousel {
+    height: 520px;
+    perspective: none;
+  }
+  .galaxy-card {
+    width: min(84vw, 300px);
+    margin-left: calc(min(84vw, 300px) / -2);
+    height: 460px;
+  }
+  .gc-visual { height: 176px; }
+  .gc-title  { font-size: 20px; }
+  .gc-desc   { font-size: 13px; }
+  .gc-body   { padding: 18px 18px 20px; }
+  .galaxy-carousel-wrapper::before { display: none; }
+  .galaxy-orbits { display: none; }
+}
+
+/* Petits mobiles */
+@media (max-width: 380px) {
+  .galaxy-card {
+    width: min(88vw, 300px);
+    margin-left: calc(min(88vw, 300px) / -2);
+    height: 480px;
+  }
+}
+
+/* ─── REDUCED MOTION ───────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .spiral-scene svg,
+  .nebula-scene::before,
+  .galaxy-card.is-active .lotus-scene,
+  .galaxy-card.is-active .net-scene,
+  .gx-star {
+    animation: none !important;
+  }
+  .galaxy-carousel-wrapper::before,
+  .galaxy-card,
+  .galaxy-btn,
+  .gc-cta,
+  .gx-current {
+    transition: none !important;
+  }
+}
