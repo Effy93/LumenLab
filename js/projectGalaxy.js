@@ -1,3 +1,5 @@
+import { requestLeave, isExternalRoute } from './leaveModal.js';
+
 export function initProjectGalaxy() {
   const section = document.getElementById('projets');
   if (!section || !window.gsap) return;
@@ -134,7 +136,10 @@ export function initProjectGalaxy() {
 
   function openActive() {
     const route = cards[activeIndex]?.dataset.route;
-    if (route) window.location.href = route;
+    if (!route) return;
+    // Univers externe → interstitiel « Caro » avant de partir.
+    if (isExternalRoute(route)) { requestLeave(route); return; }
+    window.location.href = route;
   }
 
   // ── Calcul positions ───────────────────────────────────

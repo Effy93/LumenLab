@@ -1,0 +1,210 @@
+/* ════════════════════════════════════════════════════════
+   Interstitiel de sortie — « Caro » avant de quitter
+   LumenLab pour un univers externe (AstraLumen).
+   ════════════════════════════════════════════════════════ */
+
+.leave-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.35s ease,
+    visibility 0s linear 0.35s;
+}
+.leave-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    opacity 0.35s ease,
+    visibility 0s;
+}
+
+.leave-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 5, 10, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* ─── Panneau ─────────────────────────────────────────── */
+.leave-dialog {
+  position: relative;
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+  max-width: 520px;
+  width: 100%;
+  padding: 28px 30px;
+  background: linear-gradient(160deg, var(--graphite) 0%, var(--bg-2) 100%);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow:
+    0 30px 80px -30px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(217, 168, 90, 0.05),
+    inset 0 1px 0 rgba(241, 236, 225, 0.04);
+  transform: translateY(14px) scale(0.98);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.leave-modal.is-open .leave-dialog {
+  transform: translateY(0) scale(1);
+}
+
+/* ─── Avatar Caro ─────────────────────────────────────── */
+.leave-avatar {
+  flex-shrink: 0;
+  width: 66px;
+  height: 66px;
+  margin: 2px 0 0;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(150deg, var(--gold-hi), var(--gold-deep));
+}
+.leave-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  border: 2px solid var(--graphite);
+}
+
+/* ─── Texte ───────────────────────────────────────────── */
+.leave-body {
+  flex: 1;
+  min-width: 0;
+}
+.leave-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--gold-hi);
+  margin: 4px 0 12px;
+}
+.leave-message {
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1.4;
+  color: var(--ink);
+  margin: 0 0 22px;
+}
+.leave-message em {
+  font-style: italic;
+  color: var(--gold-hi);
+}
+
+/* ─── Actions ─────────────────────────────────────────── */
+.leave-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.leave-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 20px;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease,
+    gap 0.3s ease;
+}
+.leave-btn svg {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.leave-stay {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink-dim);
+}
+.leave-stay:hover {
+  border-color: rgba(241, 236, 225, 0.28);
+  color: var(--ink);
+}
+
+.leave-continue {
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold-hi);
+}
+.leave-continue::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(150deg, var(--gold-hi), var(--gold));
+  transform: translateX(-101%);
+  transition: transform 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+}
+.leave-continue span,
+.leave-continue svg {
+  position: relative;
+  z-index: 1;
+}
+.leave-continue:hover {
+  color: #050810;
+}
+.leave-continue:hover::before {
+  transform: translateX(0);
+}
+.leave-continue:hover svg {
+  transform: translateX(3px);
+}
+
+.leave-btn:focus-visible {
+  outline: 2px solid var(--gold-hi);
+  outline-offset: 3px;
+}
+
+/* ─── Responsive ──────────────────────────────────────── */
+@media (max-width: 520px) {
+  .leave-dialog {
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 22px;
+    text-align: center;
+    align-items: center;
+  }
+  .leave-message {
+    font-size: 19px;
+  }
+  .leave-actions {
+    justify-content: center;
+  }
+}
+
+/* ─── Reduced motion ──────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .leave-modal,
+  .leave-dialog,
+  .leave-btn,
+  .leave-btn svg,
+  .leave-continue::before {
+    transition-duration: 0.01ms;
+  }
+  .leave-modal.is-open .leave-dialog {
+    transform: none;
+  }
+}
