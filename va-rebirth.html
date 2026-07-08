@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VA-Rebirth — Un projet en reconstruction</title>
+    <meta
+      name="description"
+      content="VA-Rebirth est un jeu web fantastique en reconstruction : créatures évolutives, forge astrale, runes, artefacts et mini-jeux au sein de l'écosystème LumenLab."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="preload" as="image" href="assets/bg-va-rebirth-wip.webp" fetchpriority="high" />
+    <link rel="icon" type="image/png" href="assets/logo-lune.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=optional"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/base/variables.css" />
+    <link rel="stylesheet" href="css/components/navbar.css" />
+    <link rel="stylesheet" href="css/pages/wip.css" />
+    <link rel="stylesheet" href="css/pages/va-rebirth.css" />
+  </head>
+  <body>
+    <!-- ════════════════════════════════════════════
+       HEADER — Navigation LumenLab
+  ════════════════════════════════════════════ -->
+    <header>
+      <a href="index.html" class="brand" aria-label="LumenLab — Retour à l'accueil">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">LUMEN<span class="lab">LAB</span></span>
+      </a>
+      <nav aria-label="Navigation principale">
+        <ul class="nav-links" role="list">
+          <li><a href="index.html">ACCUEIL</a></li>
+          <li><a href="index.html#vision">VISION</a></li>
+          <li><a href="index.html#projets">PROJETS</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ════════════════════════════════════════════
+       SCÈNE — plein écran immersif
+  ════════════════════════════════════════════ -->
+    <div class="stage">
+      <div class="stars" aria-hidden="true"></div>
+      <div class="grain" aria-hidden="true"></div>
+
+      <main>
+        <p class="eyebrow">Projet en reconstruction</p>
+        <h1>VA-Rebirth</h1>
+        <p class="subtitle">La forge astrale se rallume</p>
+
+        <!-- Visuel « forge » — purement décoratif -->
+        <div class="forge" aria-hidden="true">
+          <div class="forge-glow"></div>
+          <div class="ring r1"></div>
+          <div class="ring r2"></div>
+          <div class="ring r3"></div>
+
+          <div class="astralithe-ring" id="astralitheRing"></div>
+
+          <div class="medallion">
+            <img
+              src="assets/astrax.webp"
+              alt="Astrax, mascotte de la forge astrale, un panda roux forgeron"
+            />
+          </div>
+        </div>
+
+        <p class="lede">
+          Un ancien monde se réveille. Les créatures reprennent forme, les runes retrouvent leur
+          éclat, et la forge astrale attend son prochain souffle.
+        </p>
+
+        <a class="back-cta" href="index.html#projets" aria-label="Retour à LumenLab">
+          <svg width="20" height="10" viewBox="0 0 20 10" fill="none" aria-hidden="true">
+            <path
+              d="M1 5 H18 M14 1 L18 5 L14 9"
+              stroke="currentColor"
+              stroke-width="1.4"
+              stroke-linecap="square"
+            />
+          </svg>
+          <span>Retour vers LumenLab</span>
+        </a>
+      </main>
+    </div>
+
+    <script>
+      // Astralithes en orbite : or (forge) + violet (astral).
+      // Chaque pierre est placée par une rotation statique, puis maintenue droite
+      // par une contre-rotation statique + une contre-animation qui annule la rotation de l'anneau.
+      (function () {
+        const ring = document.getElementById('astralitheRing');
+        if (!ring) return;
+        const stones = [
+          { angle: 0, src: 'assets/astralithe-or.webp', alt: '' },
+          { angle: 90, src: 'assets/astralithe-violet.webp', alt: '' },
+          { angle: 180, src: 'assets/astralithe-or.webp', alt: '' },
+          { angle: 270, src: 'assets/astralithe-violet.webp', alt: '' },
+        ];
+        stones.forEach(({ angle, src, alt }) => {
+          const el = document.createElement('span');
+          el.className = 'astralithe';
+          el.style.transform = `rotate(${angle}deg)`;
+          const upright = document.createElement('span');
+          upright.className = 'upright';
+          upright.style.transform = `rotate(${-angle}deg)`;
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = alt;
+          img.loading = 'lazy';
+          img.decoding = 'async';
+          upright.appendChild(img);
+          el.appendChild(upright);
+          ring.appendChild(el);
+        });
+
+        // Poussière de forge dérivant à l'intérieur du visuel.
+        const forge = document.querySelector('.forge');
+        if (!forge) return;
+        for (let i = 0; i < 10; i++) {
+          const e = document.createElement('span');
+          e.className = 'ember';
+          e.style.left = 30 + Math.random() * 40 + '%';
+          e.style.top = 55 + Math.random() * 30 + '%';
+          e.style.setProperty('--dx', Math.random() * 30 - 15 + 'px');
+          e.style.animationDelay = Math.random() * 9 + 's';
+          e.style.animationDuration = 7 + Math.random() * 6 + 's';
+          forge.appendChild(e);
+        }
+      })();
+    </script>
+  </body>
+</html>
