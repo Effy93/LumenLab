@@ -2,7 +2,7 @@
 
 ![LumenLab — aperçu du site](docs/screenshots/hero-final.png)
 
-Site vitrine single-page — portail vers AstraLumen et CelestIA, deux univers amenés à devenir des sites indépendants.
+Site vitrine single-page — portail vers AstraLumen, CelestIA, VA-Rebirth et TaskHelper, des univers amenés à devenir des sites indépendants.
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
@@ -10,11 +10,15 @@ Site vitrine single-page — portail vers AstraLumen et CelestIA, deux univers a
 
 ## Pages
 
-| Fichier            | Rôle                                      | Statut |
-|--------------------|-------------------------------------------|--------|
-| `index.html`       | Portail principal (Hero · Projets · Vision) | Live   |
-| `astralumen.html`  | Page WIP — AstraLumen                     | WIP    |
-| `celestia.html`    | Page WIP — CelestIA                       | WIP    |
+| Fichier                | Rôle                                        | Statut |
+|------------------------|---------------------------------------------|--------|
+| `index.html`           | Portail principal (Hero · Projets · Vision) | Live   |
+| `celestia.html`        | Page WIP — CelestIA                         | WIP    |
+| `va-rebirth.html`      | Page WIP — VA-Rebirth (« la forge astrale se rallume ») | WIP    |
+| `taskhelper.html`      | Page WIP — TaskHelper                        | WIP    |
+| `mentions-legales.html`| Mentions légales                            | Live   |
+
+> AstraLumen n'a plus de page locale : c'est désormais un site externe (`https://astralumen.lumenforge.me`), atteint via un interstitiel de confirmation depuis le carrousel Projets.
 
 ## Sections — index.html
 
@@ -28,13 +32,16 @@ Site vitrine single-page — portail vers AstraLumen et CelestIA, deux univers a
 
 ```
 LumenLab/
-├── index.html
-├── astralumen.html
-├── celestia.html
+├── index.html                ← portail principal
+├── celestia.html             ← WIP CelestIA
+├── va-rebirth.html           ← WIP VA-Rebirth
+├── taskhelper.html           ← WIP TaskHelper
+├── mentions-legales.html     ← mentions légales
+├── CNAME                     ← domaine GitHub Pages (lumenforge.me)
 ├── css/
-│   ├── main.css              ← point d'entrée (@import)
+│   ├── main.css              ← point d'entrée (@import) pour index.html
 │   ├── base/
-│   │   ├── variables.css     ← tokens (couleurs, typo, espacements)
+│   │   ├── variables.css     ← tokens (couleurs, typo)
 │   │   ├── reset.css
 │   │   └── typography.css
 │   ├── layout/
@@ -45,10 +52,17 @@ LumenLab/
 │   │   ├── buttons.css
 │   │   ├── cards.css
 │   │   ├── project-card.css
+│   │   ├── project-galaxy.css ← carrousel galactique Projets
+│   │   ├── navbar.css        ← navbar partagée (pages secondaires)
+│   │   ├── leave-modal.css   ← interstitiel de sortie (univers externes)
 │   │   └── badges.css
 │   ├── pages/
 │   │   ├── home.css
-│   │   └── wip.css
+│   │   ├── wip.css           ← base commune aux pages WIP
+│   │   ├── celestia.css
+│   │   ├── va-rebirth.css
+│   │   ├── taskhelper.css
+│   │   └── legal.css
 │   └── utilities/
 │       ├── animations.css
 │       └── responsive.css
@@ -56,18 +70,22 @@ LumenLab/
 │   ├── main.js               ← orchestration
 │   ├── nav.js                ← navbar scroll
 │   ├── particles.js          ← particules canvas
-│   └── reveal.js             ← animations au scroll
-├── assets/                   ← images et logos
+│   ├── reveal.js             ← animations au scroll
+│   ├── projectGalaxy.js      ← logique du carrousel Projets
+│   ├── leaveModal.js         ← interstitiel avant sortie externe
+│   └── legal.js              ← mentions légales
+├── assets/                   ← images et logos (WebP optimisés)
 └── docs/
     ├── screenshots/
-    ├── content/              ← about, archi, rapport
+    └── content/              ← about, archi, rapport
 ```
 
 ## Projets portails
 
-- **AstraLumen** — introspection, mémoire, création
+- **AstraLumen** — introspection, mémoire, création (site externe)
 - **CelestIA** — IA, agents autonomes, créativité augmentée
-- **Expériments** — prototypes et explorations technologiques; TaskHelper
+- **VA-Rebirth** — renaissance d'un jeu web / RPG : créatures évolutives, forge astrale, runes et artefacts
+- **TaskHelper** — outil de productivité visuelle; prototypes et explorations technologiques
 
 ## Design
 
