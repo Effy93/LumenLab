@@ -83,3 +83,51 @@
     height: 12px;
   }
 }
+
+/* ─── MOBILE PORTRAIT — CADRAGE DU HERO ──────────────── */
+/* L'image hero est panoramique (3:2) : en portrait, le recadrage
+   « cover » rejetait la lune hors de l'écran. On recentre la lune
+   horizontalement, on la place dans le tiers supérieur, puis on
+   renforce le voile sombre pour garder le texte lisible au-dessus
+   du sable lumineux. */
+@media (max-width: 768px) and (orientation: portrait) {
+  .hero-image {
+    background-size: auto 118%;
+    background-position: 72% clamp(16px, 5vh, 44px);
+  }
+  .hero-image::after {
+    background: linear-gradient(
+      180deg,
+      rgba(3, 5, 11, 0.6) 0%,
+      rgba(3, 5, 11, 0.12) 14%,
+      rgba(3, 5, 11, 0.18) 32%,
+      rgba(3, 5, 11, 0.55) 48%,
+      rgba(3, 5, 11, 0.82) 75%,
+      #03050b 100%
+    );
+  }
+  /* Le texte descend sous la lune plutôt que de la recouvrir.
+     Marges fluides pour que ça tienne aussi sur les petits écrans. */
+  .hero {
+    align-items: end;
+    padding: clamp(96px, 14vh, 120px) 28px clamp(100px, 18vh, 150px);
+  }
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: clamp(46px, 14vw, 64px);
+    margin-bottom: 24px;
+  }
+  .lede {
+    font-size: 18px;
+    margin-bottom: 36px;
+  }
+  /* Indicateur de scroll aligné sur la nouvelle marge du hero */
+  .scroll-ind {
+    left: 28px;
+    bottom: 40px;
+  }
+}
