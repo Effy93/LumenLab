@@ -17,7 +17,7 @@ Site vitrine single-page — portail vers AstraLumen, CelestIA, VA-Rebirth et Ta
 | `taskhelper.html`      | Page WIP — TaskHelper                        | WIP    |
 | `mentions-legales.html`| Mentions légales                            | Live   |
 
-> AstraLumen et VA-Rebirth n'ont plus de page locale : ce sont désormais des sites externes (`https://astralumen.lumenforge.me`, `https://va-rebirth.lumenforge.me`), atteints via un interstitiel de confirmation depuis le carrousel Projets (Caro pour AstraLumen, Astrax pour VA-Rebirth).
+> AstraLumen et VA-Rebirth n'ont plus de page locale : ce sont désormais des sites externes (`https://astralumen.lumenforge.me`, `https://va-rebirth.lumenforge.me/`), atteints via un interstitiel de confirmation depuis le carrousel Projets (Caro pour AstraLumen, Astrax pour VA-Rebirth).
 
 ## Sections — index.html
 
