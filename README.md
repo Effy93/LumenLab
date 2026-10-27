@@ -14,11 +14,10 @@ Site vitrine single-page — portail vers AstraLumen, CelestIA, VA-Rebirth et Ta
 |------------------------|---------------------------------------------|--------|
 | `index.html`           | Portail principal (Hero · Projets · Vision) | Live   |
 | `celestia.html`        | Page WIP — CelestIA                         | WIP    |
-| `va-rebirth.html`      | Page WIP — VA-Rebirth (« la forge astrale se rallume ») | WIP    |
 | `taskhelper.html`      | Page WIP — TaskHelper                        | WIP    |
 | `mentions-legales.html`| Mentions légales                            | Live   |
 
-> AstraLumen n'a plus de page locale : c'est désormais un site externe (`https://astralumen.lumenforge.me`), atteint via un interstitiel de confirmation depuis le carrousel Projets.
+> AstraLumen et VA-Rebirth n'ont plus de page locale : ce sont désormais des sites externes (`https://astralumen.lumenforge.me`, `https://va-rebirth.lumenforge.me`), atteints via un interstitiel de confirmation depuis le carrousel Projets (Caro pour AstraLumen, Astrax pour VA-Rebirth).
 
 ## Sections — index.html
 
@@ -34,7 +33,6 @@ Site vitrine single-page — portail vers AstraLumen, CelestIA, VA-Rebirth et Ta
 LumenLab/
 ├── index.html                ← portail principal
 ├── celestia.html             ← WIP CelestIA
-├── va-rebirth.html           ← WIP VA-Rebirth
 ├── taskhelper.html           ← WIP TaskHelper
 ├── mentions-legales.html     ← mentions légales
 ├── CNAME                     ← domaine GitHub Pages (lumenforge.me)
@@ -60,7 +58,6 @@ LumenLab/
 │   │   ├── home.css
 │   │   ├── wip.css           ← base commune aux pages WIP
 │   │   ├── celestia.css
-│   │   ├── va-rebirth.css
 │   │   ├── taskhelper.css
 │   │   └── legal.css
 │   └── utilities/
@@ -84,7 +81,7 @@ LumenLab/
 
 - **AstraLumen** — introspection, mémoire, création (site externe)
 - **CelestIA** — IA, agents autonomes, créativité augmentée
-- **VA-Rebirth** — renaissance d'un jeu web / RPG : créatures évolutives, forge astrale, runes et artefacts
+- **VA-Rebirth** — renaissance d'un jeu web / RPG : créatures évolutives, forge astrale, runes et artefacts (site externe)
 - **TaskHelper** — outil de productivité visuelle; prototypes et explorations technologiques
 
 ## Design

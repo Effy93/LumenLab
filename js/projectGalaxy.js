@@ -137,7 +137,7 @@ export function initProjectGalaxy() {
   function openActive() {
     const route = cards[activeIndex]?.dataset.route;
     if (!route) return;
-    // Univers externe → interstitiel « Caro » avant de partir.
+    // Univers externe → interstitiel de sortie avant de partir.
     if (isExternalRoute(route)) { requestLeave(route); return; }
     window.location.href = route;
   }

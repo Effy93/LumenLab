@@ -1,7 +1,23 @@
-/* Interstitiel « Caro » : confirme avant de quitter LumenLab
-   vers un univers externe (AstraLumen). */
+/* Interstitiel : confirme avant de quitter LumenLab vers un univers
+   externe (AstraLumen avec Caro, VA-Rebirth avec Astrax). */
 
-let modal, dialog, continueLink;
+// Gardien·ne affiché·e selon le domaine de destination.
+const DESTINATIONS = {
+  'astralumen.lumenforge.me': {
+    universe: 'AstraLumen',
+    guide: 'Caro',
+    avatar: 'assets/Caro2.png',
+    alt: "Caro, gardienne d'AstraLumen",
+  },
+  'va-rebirth.lumenforge.me': {
+    universe: 'VA-Rebirth',
+    guide: 'Astrax',
+    avatar: 'assets/astrax.webp',
+    alt: 'Astrax, mascotte de la forge astrale, un panda roux forgeron',
+  },
+};
+
+let modal, dialog, continueLink, avatarImg, labelEl, universeEl;
 let pendingUrl = null;
 let lastFocused = null;
 
@@ -18,7 +34,18 @@ export function requestLeave(url) {
   }
   pendingUrl = url;
   if (continueLink) continueLink.href = url;
+  applyDestination(url);
   open();
+}
+
+function applyDestination(url) {
+  let host;
+  try { host = new URL(url).hostname; } catch { return; }
+  const dest = DESTINATIONS[host];
+  if (!dest) return;
+  if (avatarImg) { avatarImg.src = dest.avatar; avatarImg.alt = dest.alt; }
+  if (labelEl) labelEl.textContent = `${dest.guide} · ${dest.universe}`;
+  if (universeEl) universeEl.textContent = dest.universe;
 }
 
 export function initLeaveModal() {
@@ -27,6 +54,9 @@ export function initLeaveModal() {
 
   dialog = modal.querySelector('.leave-dialog');
   continueLink = modal.querySelector('.leave-continue');
+  avatarImg = modal.querySelector('.leave-avatar img');
+  labelEl = modal.querySelector('.leave-label');
+  universeEl = modal.querySelector('.leave-message em');
 
   // Fermeture : backdrop, bouton « Rester ici ».
   modal.querySelectorAll('[data-leave-close]').forEach(el => {
